@@ -149,6 +149,6 @@ This allows you to quickly extract what's valuable and meaningful from the conte
 
 ## Meta
 
-- **Author**: Daniel Miessler
-- **Version Information**: Daniel's main `extractwisdom` version.
+- **Author**: Ruslan Kurchenko
+- **Version Information**: Ruslan's main `extractwisdom` version.
 - **Published**: January 5, 2024

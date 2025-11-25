@@ -39,7 +39,7 @@ PAI (Personal AI Infrastructure) is a template for building your own AI-powered 
 
 ---
 
-## 🔄 **PAI vs Kai: What You Get**
+## 🔄 **PAI vs Walle: What You Get**
 
 **PAI (this repository) provides:**
 - ✅ Skills/agents/hooks architecture
@@ -49,13 +49,13 @@ PAI (Personal AI Infrastructure) is a template for building your own AI-powered 
 - ✅ Voice server skeleton
 - ⚙️ **Requires:** API key configuration per skill
 
-**Kai (Daniel's private system) adds:**
+**Walle (Ruslan's private system) adds:**
 - 🔒 Personal data, contacts, and history
 - 🔒 Additional private skills and workflows
 - 🔒 Customized agent personalities and voices
 - 🔒 Production integrations and automations
 
-**Think of it this way:** PAI is the scaffolding. You build your own "Kai" on top of it.
+**Think of it this way:** PAI is the scaffolding. You build your own "Walle" on top of it.
 
 **After setup, PAI should:**
 - ✅ Execute hooks without errors

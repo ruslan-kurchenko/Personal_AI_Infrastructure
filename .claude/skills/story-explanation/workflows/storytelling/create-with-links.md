@@ -77,7 +77,7 @@ ULTRATHINK: Think deeply about this content. What's the REAL story here?
 NARRATIVE FRAMING ANALYSIS:
 - What inflection point or pattern is emerging?
 - What narrative framing makes this most compelling?
-- How would Daniel explain this to someone who cares about this topic?
+- How would Ruslan explain this to someone who cares about this topic?
 - What's the key angle?
   * "Production Transition" (experimental → operational)
   * "Platform War" (competition and consolidation)
@@ -90,7 +90,7 @@ NARRATIVE FRAMING ANALYSIS:
 - What's the escalating arc? (where does the story build toward?)
 
 VOICE CHECK:
-- This needs Daniel's voice: first person, casual, direct
+- This needs Ruslan's voice: first person, casual, direct
 - No corporate speak - conversational and honest
 - Facts + interpretation, not just facts
 - Connect the dots for the reader
@@ -113,7 +113,7 @@ Based on the chosen narrative framing, generate the story explanation with inlin
    - Body (n-2 sentences): Escalating story flow with varied sentence length
    - Closing sentence: "Wow" factor without hyperbole
 
-4. **Style (Daniel's Voice):**
+4. **Style (Ruslan's Voice):**
    - First person ("I", "we", "me")
    - Casual and direct ("Here's the thing", "This is huge")
    - No corporate speak or buzzwords
@@ -257,7 +257,7 @@ Present the complete story explanation with:
 2. **Comprehensive source mapping** - Map EVERY development to URLs before writing
 3. **Sentence-by-sentence link insertion** - Add ALL relevant links after EACH sentence
 4. **NO MAXIMUM on links** - If sentence mentions 10 things, include 10 links
-5. **Daniel's voice** - First person, casual, direct, conversational
+5. **Ruslan's voice** - First person, casual, direct, conversational
 6. **Natural narrative flow** - Escalating story arc from opening to closing
 
 **Quality checks before output:**

@@ -11,11 +11,11 @@ This document defines what PAI (Personal AI Infrastructure) guarantees, what req
 
 **PAI is a public template** for building personal AI infrastructure using Claude Code.
 
-**PAI vs Kai:**
+**PAI vs Walle:**
 - **PAI** = This public repository (sanitized template for everyone)
-- **Kai** = Daniel Miessler's private system (personal data, workflows, integrations)
+- **Walle** = Ruslan Kurchenko's private system (personal data, workflows, integrations)
 
-Think of PAI as the scaffolding. You build your own "Kai" on top of it.
+Think of PAI as the scaffolding. You build your own "Walle" on top of it.
 
 ---
 
@@ -109,7 +109,7 @@ Complex workflows may:
 
 ### 3. **Documentation**
 Some docs describe:
-- Daniel's private Kai setup
+- Ruslan's private Walle setup
 - Features not in public PAI
 - Aspirational capabilities
 
@@ -166,12 +166,12 @@ PAI does NOT guarantee:
 
 ## 🛡️ Protected Content (For Maintainers)
 
-These files are **PAI-specific** and must NOT be overwritten with Kai content:
+These files are **PAI-specific** and must NOT be overwritten with Walle content:
 
 ### **Protected Files:**
 ```
 PAI_CONTRACT.md                    # This file
-README.md                          # PAI-specific (not Kai README)
+README.md                          # PAI-specific (not Walle README)
 .claude/hooks/lib/pai-paths.ts     # PAI path resolution
 .claude/hooks/self-test.ts         # PAI health check
 SECURITY.md                        # Public security guidance
@@ -183,7 +183,7 @@ SECURITY.md                        # Public security guidance
 - Hook configurations (must use ${PAI_DIR})
 - Permission denials for safety
 
-**When syncing Kai → PAI:**
+**When syncing Walle → PAI:**
 - Skip protected files entirely
 - Sanitize all secrets/personal data
 - Test with self-test.ts before committing
@@ -194,7 +194,7 @@ SECURITY.md                        # Public security guidance
 
 **v1.0 (2025-11-20):**
 - Initial contract defining boundaries
-- PAI vs Kai distinction clarified
+- PAI vs Walle distinction clarified
 - Core guarantees documented
 - Self-test system introduced
 
@@ -221,8 +221,8 @@ PAI is community-driven:
 **Q: Why doesn't [feature] work?**
 A: Check if it's core (guaranteed), configured (needs API key), or example (may be stale).
 
-**Q: Is this PAI or Kai?**
-A: PAI = public template. Kai = Daniel's private system. You build your own "Kai" on PAI.
+**Q: Is this PAI or Walle?**
+A: PAI = public template. Walle = Ruslan's private system. You build your own "Walle" on PAI.
 
 **Q: Can I customize PAI?**
 A: Yes! That's the point. PAI is scaffolding. Build on it.

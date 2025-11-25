@@ -238,7 +238,7 @@ mkdir -p ${PAI_DIR}/skills/[skill-name]/[component-dirs]
 
 **Step 1: Write description first**
 - This drives everything else
-- Test by asking: "Would Kai activate this skill for relevant requests?"
+- Test by asking: "Would Walle activate this skill for relevant requests?"
 
 **Step 2: Document activation triggers**
 - List explicit user phrases

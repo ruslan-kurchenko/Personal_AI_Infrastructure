@@ -1,6 +1,6 @@
 ---
 name: story-explanation
-description: Create compelling story-format summaries using UltraThink to find the best narrative framing. Support multiple formats - 3-part narrative, n-length with inline links, abridged 5-line, or comprehensive via Foundry MCP. USE WHEN user says 'create story explanation', 'narrative summary', 'explain as a story', or wants content in Daniel's conversational first-person voice.
+description: Create compelling story-format summaries using UltraThink to find the best narrative framing. Support multiple formats - 3-part narrative, n-length with inline links, abridged 5-line, or comprehensive via Foundry MCP. USE WHEN user says 'create story explanation', 'narrative summary', 'explain as a story', or wants content in Ruslan's conversational first-person voice.
 ---
 
 # Story Explanation - Narrative Summary with Creative Analysis
@@ -20,7 +20,7 @@ description: Create compelling story-format summaries using UltraThink to find t
 Based on:
 - **UltraThink**: Deep content understanding across multiple perspectives and narrative angles
 - **Best framing selection**: Choose the most compelling narrative angle from multiple options
-- **Daniel Miessler voice**: First person, casual, direct, genuinely curious
+- **Ruslan Kurchenko voice**: First person, casual, direct, genuinely curious
 
 **The Problem This Solves:**
 - Generic summaries use obvious framing without exploring alternatives
@@ -36,7 +36,7 @@ Based on:
 - User wants content explained in conversational, engaging format
 - Need to find the most compelling narrative hook for content
 - User explicitly requests this skill
-- Want to present content in Daniel's voice
+- Want to present content in Ruslan's voice
 - Format-specific requests: "story with links", "abridged story", "5-line summary", "CSE", "CSE5"
 - Slash commands: `/create-story-explanation`, `/cse`, `/cse5`
 
@@ -194,7 +194,7 @@ Think deeply and extensively about this content:
 5. EMPHASIS OPTIONS - Which elements could be emphasized or de-emphasized?
 6. STRUCTURAL APPROACHES - Chronological? Problem-solution? Comparison?
 7. IMPACT FOCUS - What's the "wow" factor that makes this significant?
-8. CONVERSATIONAL FLOW - How would Daniel explain this to a friend?
+8. CONVERSATIONAL FLOW - How would Ruslan explain this to a friend?
 9. KEY INSIGHTS - What makes readers think "I get it now!"?
 10. BEST FRAMING - Which narrative angle is most compelling?
 
@@ -227,7 +227,7 @@ STEP 2 - SELECT BEST FRAMING:
 Choose the single most compelling narrative framing that:
 - Has the strongest hook
 - Best captures the "wow" factor
-- Would make Daniel most excited to share
+- Would make Ruslan most excited to share
 - Feels most natural in his voice
 - Makes complex ideas accessible
 
@@ -243,7 +243,7 @@ Use the selected framing to create the story explanation in the appropriate form
 - Compelling sentence that sets up the content
 - Use plain descriptors: "interview", "paper", "talk", "article", "post", "blog"
 - Avoid journalistic adjectives: "alarming", "groundbreaking", "shocking", "incredible"
-- First person voice (Daniel's perspective)
+- First person voice (Ruslan's perspective)
 
 **Body (5-15 sentences)**
 - Escalating story-based flow: background → main points → examples → implications
@@ -308,7 +308,7 @@ Use the selected framing to create the story explanation in the appropriate form
 - Closing delivers "wow" factor without hyperbole
 - Reads naturally when spoken aloud
 - Sticks to facts from the content
-- Feels like Daniel sharing something interesting
+- Feels like Ruslan sharing something interesting
 
 ### BAD SIGNALS (avoid):
 - Journalistic or academic tone
@@ -334,14 +334,14 @@ Use the selected framing to create the story explanation in the appropriate form
 - Single BEST story explanation in chosen format
 - Uses be-creative skill (UltraThink)
 - Deep reasoning to explore and find best framing
-- Daniel Miessler voice (first person, casual, direct)
+- Ruslan Kurchenko voice (first person, casual, direct)
 - Explores multiple narrative angles, selects most compelling
 - Specifically designed for engaging storytelling
 - Prioritizes conversational flow and "wow" factor
 
-## Integration with Kai
+## Integration with Walle
 
-When this skill activates, Kai should:
+When this skill activates, Walle should:
 
 1. **Determine format** - Based on user request, select appropriate workflow
 2. **Create scratchpad directory** - `~/.claude/scratchpad/YYYY-MM-DD-HHMMSS_story-explanation-[topic]/`
@@ -355,7 +355,7 @@ When this skill activates, Kai should:
 10. **Select best framing** - Choose the most compelling narrative angle
 11. **Output in selected format** - 3-part, n-length with links, abridged, or Foundry format
 12. **Save final output to scratchpad** - Store completed story explanation
-13. **Use Daniel's voice** - First person, casual, direct, genuinely curious
+13. **Use Ruslan's voice** - First person, casual, direct, genuinely curious
 14. **Optionally archive to history** - Only if analysis methodology is exceptionally valuable for future reference
 
 **Critical:** The be-creative skill provides UltraThink framework ensuring we explore creative narrative framings that would otherwise be missed due to mode collapse, then select the single BEST one.
@@ -372,7 +372,7 @@ When this skill activates, Kai should:
 3. **Explore diverse framings** - Generate multiple creative narrative framings through deep analysis
 4. **Select best framing** - Choose the most compelling narrative angle
 5. **Format flexibility** - Multiple output formats for different use cases
-6. **Daniel's voice** - First person, casual, direct, genuinely curious
+6. **Ruslan's voice** - First person, casual, direct, genuinely curious
 7. **Conversational flow** - Vary sentence length (8-16 words), natural rhythm
 8. **Avoid cliches** - No "game-changer", "paradigm shift", "revolutionary", etc.
 9. **Stick to facts** - Don't extrapolate beyond the input
@@ -384,7 +384,7 @@ When this skill activates, Kai should:
 2. **Formulaic structure** - Generic academic or journalistic tone
 3. **Cliche language** - Using "game-changer", "paradigm shift", "revolutionary", "groundbreaking"
 4. **Extrapolating** - Adding information not in the source content
-5. **Wrong voice** - Third person, formal, or academic instead of Daniel's casual first person
+5. **Wrong voice** - Third person, formal, or academic instead of Ruslan's casual first person
 6. **No "wow" factor** - Missing the compelling closing that makes significance clear
 7. **Bullet points** - Using numbered lists or bullets in final output
 8. **Flowery language** - Emotional, journalistic, or hyperbolic tone
@@ -396,7 +396,7 @@ You've succeeded with this skill when:
 - Opening hooks the reader with plain, direct language
 - Body flows conversationally with varied sentence length
 - Closing delivers "wow" factor without hyperbole
-- Voice feels like Daniel sharing something interesting with a friend
+- Voice feels like Ruslan sharing something interesting with a friend
 - Sticks to facts from the content without extrapolating
 - No cliches or journalistic language
 - User says "This makes me want to share it!" or "I get it now!"
@@ -416,7 +416,7 @@ You've succeeded with this skill when:
 - CSE/CSE5: Foundry MCP formats
 
 **Voice:**
-- First person (Daniel's perspective)
+- First person (Ruslan's perspective)
 - Casual, direct, genuinely curious
 - Natural conversational tone (like telling a friend)
 - NO cliches, journalistic language, or flowery tone
@@ -444,4 +444,4 @@ You've succeeded with this skill when:
 
 ---
 
-**This skill provides compelling narrative explanations in Daniel's voice using research-backed creativity techniques to find the BEST framing from multiple possibilities.**
+**This skill provides compelling narrative explanations in Ruslan's voice using research-backed creativity techniques to find the BEST framing from multiple possibilities.**

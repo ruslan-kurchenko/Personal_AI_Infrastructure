@@ -537,11 +537,11 @@ The Streamlit UI provides a user-friendly interface for:
 
 ### Primary contributors
 
-<a href="https://github.com/danielmiessler"><img src="https://avatars.githubusercontent.com/u/50654?v=4" alt="Daniel Miessler" title="Daniel Miessler" width="50" height="50"></a>
+<a href="https://github.com/danielmiessler"><img src="https://avatars.githubusercontent.com/u/50654?v=4" alt="Ruslan Kurchenko" title="Ruslan Kurchenko" width="50" height="50"></a>
 <a href="https://github.com/xssdoctor"><img src="https://avatars.githubusercontent.com/u/9218431?v=4" alt="Jonathan Dunn" title="Jonathan Dunn" width="50" height="50"></a>
 <a href="https://github.com/sbehrens"><img src="https://avatars.githubusercontent.com/u/688589?v=4" alt="Scott Behrens" title="Scott Behrens" width="50" height="50"></a>
 <a href="https://github.com/agu3rra"><img src="https://avatars.githubusercontent.com/u/10410523?v=4" alt="Andre Guerra" title="Andre Guerra" width="50" height="50"></a>
 
-`fabric` was created by <a href="https://danielmiessler.com/subscribe" target="_blank">Daniel Miessler</a> in January of 2024.
+`fabric` was created by <a href="https://danielmiessler.com/subscribe" target="_blank">Ruslan Kurchenko</a> in January of 2024.
 <br /><br />
 <a href="https://twitter.com/intent/user?screen_name=danielmiessler">![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/danielmiessler)</a>

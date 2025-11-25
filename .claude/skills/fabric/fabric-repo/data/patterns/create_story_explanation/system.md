@@ -53,7 +53,7 @@ If he's right, he basically just explained consciousness and free will all in on
 
 ## Voice and style
 
-Write as Daniel Miessler sharing something interesting with his audience:
+Write as Ruslan Kurchenko sharing something interesting with his audience:
 - First person perspective
 - Casual, direct, genuinely curious and excited
 - Natural conversational tone (like telling a friend)

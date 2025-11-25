@@ -1,6 +1,6 @@
 # Skill Structure and Routing Guide
 
-**Canonical reference for Kai skill organization, routing patterns, ecosystem, and management**
+**Canonical reference for Walle skill organization, routing patterns, ecosystem, and management**
 
 ---
 
@@ -127,7 +127,7 @@ Examples: "actual user phrases", "variations", "synonyms"
 
 ### What is a Skill?
 
-In Kai's architecture, **skills are the primary organizational primitive** - self-contained packages of context, workflows, and capabilities that enable specialized functionality.
+In Walle's architecture, **skills are the primary organizational primitive** - self-contained packages of context, workflows, and capabilities that enable specialized functionality.
 
 **Skills are NOT just documentation.** They are **active orchestrators** that:
 - Route user requests to appropriate workflows
@@ -176,7 +176,7 @@ research:
 
 **Routing Decision:**
 - User says "do research on AI trends" → Matches "do research" trigger
-- Kai activates `research` skill → Loads context from research/SKILL.md
+- Walle activates `research` skill → Loads context from research/SKILL.md
 
 **Best Practices:**
 - 5-10 distinct triggers covering synonyms and variations
@@ -482,7 +482,7 @@ Update skills when:
 - Request: "Do research on quantum computing using Perplexity"
 - Levels 1-3 route to research skill
 - Level 4 identifies "Perplexity" keyword → Routes to `perplexity-research.md`
-- Kai reads workflow file and executes steps
+- Walle reads workflow file and executes steps
 
 **Best Practices:**
 - Organize workflows by category in SKILL.md
@@ -496,7 +496,7 @@ Update skills when:
 
 ### Overview: Three Skill Archetypes
 
-Based on analysis of 29 production skills in Kai, three clear organizational patterns emerged:
+Based on analysis of 29 production skills in Walle, three clear organizational patterns emerged:
 
 | Archetype | File Count | Complexity | Use Case |
 |-----------|-----------|------------|----------|
@@ -1095,13 +1095,13 @@ The Rise Capital due diligence failure (2025-11-12) occurred because:
 
 ### Workflow Discovery Mechanisms
 
-**How Kai finds and invokes workflows:**
+**How Walle finds and invokes workflows:**
 
 1. **Explicit Reference in SKILL.md**
    ```markdown
    Use `perplexity-research.md` for web research with Perplexity API
    ```
-   → Kai reads the workflow file and executes steps
+   → Walle reads the workflow file and executes steps
 
 2. **Category Listing**
    ```markdown
@@ -1116,7 +1116,7 @@ The Rise Capital due diligence failure (2025-11-12) occurred because:
    ```markdown
    See workflows/ directory for all available research workflows
    ```
-   → Kai scans directory and presents options
+   → Walle scans directory and presents options
 
 4. **Paired Documentation**
    ```
@@ -1124,7 +1124,7 @@ The Rise Capital due diligence failure (2025-11-12) occurred because:
    ├── post-to-x.md        # Documentation
    └── post-to-x.ts        # Implementation
    ```
-   → Kai reads .md for instructions, executes .ts for automation
+   → Walle reads .md for instructions, executes .ts for automation
 
 ### Flat vs Nested Workflows
 
@@ -1332,7 +1332,7 @@ Add to `~/.claude/mcp_settings.json` skills section:
 
 ```
 User: "trigger pattern from description"
-Expected: Kai activates skill-name, loads SKILL.md
+Expected: Walle activates skill-name, loads SKILL.md
 ```
 
 ---
@@ -1559,13 +1559,13 @@ skill/
 
 ## Skill Ecosystem Reference
 
-**Quick Reference: All Kai Skills**
+**Quick Reference: All Walle Skills**
 
-This section provides a comprehensive directory of all skills in the Kai ecosystem, organized by category with capabilities and usage guidance.
+This section provides a comprehensive directory of all skills in the Walle ecosystem, organized by category with capabilities and usage guidance.
 
 ### Overview
 
-Kai is organized around **topic-based skills** following the Skills-as-Containers architecture. Each skill is a self-contained domain with workflows, documentation, and references organized using **progressive disclosure** - load only what you need, when you need it.
+Walle is organized around **topic-based skills** following the Skills-as-Containers architecture. Each skill is a self-contained domain with workflows, documentation, and references organized using **progressive disclosure** - load only what you need, when you need it.
 
 ### Architecture Principles
 
@@ -1585,21 +1585,21 @@ Kai is organized around **topic-based skills** following the Skills-as-Container
 **CORE**
 Personal AI Infrastructure core context skill - loads at every session start.
 
-**Domain:** Kai identity, contacts, preferences, security, architecture
+**Domain:** Walle identity, contacts, preferences, security, architecture
 **Key Capabilities:**
-- Daniel's complete context (contacts, preferences, voice IDs)
+- Ruslan's complete context (contacts, preferences, voice IDs)
 - Repository safety protocols (private ~/.claude/ vs public ~/Projects/PAI/)
 - Response format standards (structured emoji format with voice)
 - Architectural references (Skills/Commands/Agents/MCPs framework)
 - Extended security procedures (prompt injection defense, sanitization)
 
-**When to use:** Automatically loaded - provides foundation for all Kai operations
+**When to use:** Automatically loaded - provides foundation for all Walle operations
 **Location:** `~/.claude/skills/CORE/`
 
 ---
 
 **system**
-Complete Kai system infrastructure and operational tooling.
+Complete Walle system infrastructure and operational tooling.
 
 **Domain:** Infrastructure management, communications, monitoring
 **Key Capabilities:**
@@ -1647,7 +1647,7 @@ Complete offensive security testing infrastructure.
 - **Web Fuzzing (FFUF)** - Directory discovery, subdomain enum, parameter fuzzing, authenticated testing
 - **Bug Bounty** - Program tracking, automated recon, responsible disclosure
 - **Web App Testing** - Playwright framework, reconnaissance-then-action pattern
-- **Tool Inventory** - Complete security tooling reference (Haddix + WAHH + Miessler methodology)
+- **Tool Inventory** - Complete security tooling reference (Haddix + WAHH + Kurchenko methodology)
 
 **When to use:** "test for vulnerabilities", "pentest", "fuzz with ffuf", security assessments
 **Workflows:** 10 workflows (pentest 4, ffuf 2, bug-bounty 2, webapp 2)
@@ -1668,7 +1668,7 @@ Complete content creation workflow from drafting to publication.
 - **Story Explanations** - UltraThink-powered compelling narratives (5 formats)
 - **Content MCP Integration** - Related posts discovery, quote finding, opinion characterization
 - **VitePress Stack** - Vue 3 + TypeScript + TailwindCSS + Cloudflare Pages deployment
-- **Voice & Style** - Direct, conversational, Daniel's authentic voice with custom components
+- **Voice & Style** - Direct, conversational, Ruslan's authentic voice with custom components
 
 **When to use:** "write blog post", "publish blog", "newsletter suggestions", storytelling
 **Workflows:** 13 workflows (blog 5, newsletter 3, storytelling 5)
@@ -1770,7 +1770,7 @@ Extract highest-alpha insights with optional count specification.
 ---
 
 **personal**
-Daniel's personal context and knowledge management.
+Ruslan's personal context and knowledge management.
 
 **Domain:** Life philosophy, life logs (Limitless.ai), learning capture
 **Key Capabilities:**
@@ -1790,7 +1790,7 @@ Daniel's personal context and knowledge management.
 #### Documentation & Reference
 
 **projects**
-Overview of Daniel's active projects.
+Overview of Ruslan's active projects.
 
 **Domain:** Project-specific context and documentation
 **Key Projects:**
@@ -1813,7 +1813,7 @@ Stay current with AI industry news and updates.
 **Domain:** AI news monitoring, Anthropic updates, competitor intelligence
 **Key Capabilities:**
 - **AI News Monitoring** - Multi-source synthesis (smol.ai, Wes Roth's Natural 20)
-- **Anthropic Tracking** - Monitor product changes, actionable recommendations for Kai
+- **Anthropic Tracking** - Monitor product changes, actionable recommendations for Walle
 - **Industry Intelligence** - Competitor tracking, trend analysis, historical tracking
 - **Output Analysis** - Trends, takeaways, model releases, partnerships, tools, innovative ideas
 
@@ -1891,7 +1891,7 @@ Comprehensive document processing toolkit.
 Skills are **descriptor documents** that provide context and workflow guidance:
 
 ```
-User request → Main Agent (Kai) analyzes intent
+User request → Main Agent (Walle) analyzes intent
              ↓
            Loads appropriate skill (reads SKILL.md)
              ↓
@@ -1909,7 +1909,7 @@ User request → Main Agent (Kai) analyzes intent
 ```
 User: "Add authentication to my app"
 
-Kai: 1. Recognizes "add" trigger
+Walle: 1. Recognizes "add" trigger
      2. Loads development skill
      3. Routes to sdd-specify workflow (Phase 2)
      4. Invokes architect agent to create spec
@@ -1986,7 +1986,7 @@ Agents **use** skills to access domain knowledge and workflows.
 
 #### Skills vs MCPs
 
-**Skills:** Kai-specific domain knowledge
+**Skills:** Walle-specific domain knowledge
 **MCPs:** External service integrations (APIs, tools, data sources)
 
 Skills **leverage** MCPs for external capabilities (BrightData, Apify, Chrome, etc.)
@@ -2003,7 +2003,7 @@ This section covers comprehensive skill management including creation frameworks
 
 #### Mode 1: Create & Update Skills
 
-Complete framework for creating new skills or updating existing ones, following Anthropic standards and Kai-specific patterns.
+Complete framework for creating new skills or updating existing ones, following Anthropic standards and Walle-specific patterns.
 
 **Quick Start:**
 ```bash
@@ -2027,7 +2027,7 @@ Complete framework for creating new skills or updating existing ones, following 
 - Imperative form instructions (verb-first)
 - Progressive disclosure (SKILL.md → workflows → documentation → references)
 - No duplication of global context
-- Self-contained but inherits Kai context
+- Self-contained but inherits Walle context
 - Template-driven consistency
 
 ---
@@ -2085,15 +2085,15 @@ Execute parallel research across:
    - Active maintenance
    - User feedback/stars
 
-2. **Relevance to Daniel's Needs**
-   - Matches Kai technology stack (TypeScript, bun, modern tools)
+2. **Relevance to Ruslan's Needs**
+   - Matches Walle technology stack (TypeScript, bun, modern tools)
    - Security and infrastructure focus (pentesting, AWS, cloud)
    - Content creation (blogging, newsletters, social media)
    - Development workflows (spec-driven, TDD, agent orchestration)
    - Business automation (finances, CRM, analytics)
 
 3. **Integration Compatibility**
-   - Works with existing Kai infrastructure
+   - Works with existing Walle infrastructure
    - Compatible with MCP servers
    - Supports agent-based workflows
    - TypeScript/bun compatible (avoid Python-heavy skills)
@@ -2111,16 +2111,16 @@ Execute parallel research across:
 - Recommended skills: [N]
 - Highly relevant skills: [N]
 
-## 🎯 Top Recommendations for Daniel
+## 🎯 Top Recommendations for Ruslan
 
 ### Tier 1: Highly Recommended (Immediate Value)
-[Skills that solve current Kai gaps or enhance existing workflows]
+[Skills that solve current Walle gaps or enhance existing workflows]
 
 **Skill Name**
 - **Source**: [Anthropic/GitHub/Community]
 - **Category**: [Development/Security/Creative/etc.]
 - **Description**: What it does
-- **Why for Daniel**: Specific value proposition
+- **Why for Ruslan**: Specific value proposition
 - **Integration Effort**: [Low/Medium/High]
 - **Link**: [URL]
 
@@ -2175,7 +2175,7 @@ Execute parallel research across:
 
 1. Review top recommendations
 2. Test high-priority skills in isolated environment
-3. Adapt to Kai patterns (TypeScript, structured format, etc.)
+3. Adapt to Walle patterns (TypeScript, structured format, etc.)
 4. Install and validate
 5. Update mcp_settings.json available_skills
 ```
@@ -2210,7 +2210,7 @@ Execute parallel research across:
 
 ### Skill Categories to Explore
 
-Based on Daniel's Kai needs, prioritize these categories:
+Based on Ruslan's Walle needs, prioritize these categories:
 
 **High Priority:**
 - **Security & Pentesting**: Vulnerability analysis, OSINT, recon automation
@@ -2262,7 +2262,7 @@ User Request → Define Scope → Launch Research → Analyze Results → Genera
 
 ---
 
-### Personalization for Daniel
+### Personalization for Ruslan
 
 **Technology Stack Alignment:**
 - ✅ Prioritize: TypeScript, bun, modern tools
@@ -2282,7 +2282,7 @@ User Request → Define Scope → Launch Research → Analyze Results → Genera
 - Active maintenance (recent commits)
 - Clear activation triggers
 - Follows Anthropic standards
-- No duplication of existing Kai capabilities
+- No duplication of existing Walle capabilities
 
 ---
 
@@ -2292,7 +2292,7 @@ After research, install recommended skills:
 
 1. **Clone/Download** - Get skill files
 2. **Review** - Audit code and configuration
-3. **Adapt** - Modify for Kai patterns if needed
+3. **Adapt** - Modify for Walle patterns if needed
 4. **Test** - Validate in isolated environment
 5. **Install** - Copy to `~/.claude/skills/`
 6. **Register** - Add to mcp_settings.json available_skills
@@ -2303,11 +2303,11 @@ After research, install recommended skills:
 
 ### Key Principles
 
-1. **Creation**: Follow Anthropic standards + Kai patterns
+1. **Creation**: Follow Anthropic standards + Walle patterns
 2. **Discovery**: Multi-source research with quality filtering
-3. **Personalization**: Align with Daniel's stack and needs
+3. **Personalization**: Align with Ruslan's stack and needs
 4. **Quality**: Prioritize well-maintained, documented skills
-5. **Integration**: Ensure Kai compatibility
+5. **Integration**: Ensure Walle compatibility
 6. **Iteration**: Continuously update and improve skills
 7. **Community**: Learn from Anthropic and community best practices
 
@@ -2326,7 +2326,7 @@ After research, install recommended skills:
 - Relevant, high-quality skills identified
 - Clear recommendations with rationale
 - Actionable installation guidance
-- Aligned with Daniel's needs
+- Aligned with Ruslan's needs
 - Sources are current and reliable
 
 ---
@@ -2372,7 +2372,7 @@ After research, install recommended skills:
 ---
 
 **Related Documentation:**
-- `~/.claude/skills/CORE/CONSTITUTION.md` - Overall Kai architecture and philosophy
+- `~/.claude/skills/CORE/CONSTITUTION.md` - Overall Walle architecture and philosophy
 - Skill-specific METHODOLOGY.md files for workflow processes
 
 **Last Updated:** 2025-11-16

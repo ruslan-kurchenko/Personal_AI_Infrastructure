@@ -1,16 +1,16 @@
 # PAI Sync Guide
 
-**How to safely sync improvements from Kai to public PAI**
+**How to safely sync improvements from Walle to public PAI**
 
 ---
 
 ## 🎯 The Challenge
 
 You have two systems:
-- **Kai** (`~/.claude/`) - Your private system with personal data, API keys, custom workflows
+- **Walle** (`~/.claude/`) - Your private system with personal data, API keys, custom workflows
 - **PAI** (`~/Projects/PAI/`) - Public template that must stay sanitized
 
-When you improve Kai, you want to share those improvements with PAI **without** exposing private data.
+When you improve Walle, you want to share those improvements with PAI **without** exposing private data.
 
 ---
 
@@ -19,8 +19,8 @@ When you improve Kai, you want to share those improvements with PAI **without** 
 PAI has built-in protection to prevent accidents:
 
 ### 1. **Protected Files List** (`.pai-protected.json`)
-Defines files that must NOT be overwritten with Kai content:
-- `README.md` - PAI-specific (not Kai README)
+Defines files that must NOT be overwritten with Walle content:
+- `README.md` - PAI-specific (not Walle README)
 - `PAI_CONTRACT.md` - Defines PAI boundaries
 - `.claude/hooks/lib/pai-paths.ts` - PAI path resolution
 - `.claude/hooks/self-test.ts` - PAI health check
@@ -31,7 +31,7 @@ Defines files that must NOT be overwritten with Kai content:
 Checks for:
 - ❌ API keys in committed files
 - ❌ Personal email addresses
-- ❌ References to private Kai data
+- ❌ References to private Walle data
 - ❌ Secrets or credentials
 
 ### 3. **Pre-Commit Hook** (`.git/hooks/pre-commit`)
@@ -41,8 +41,8 @@ Automatically runs validation before every commit.
 
 ## 📋 Safe Sync Workflow
 
-### Step 1: Make Changes in Kai
-Work in your private Kai system (`~/.claude/`):
+### Step 1: Make Changes in Walle
+Work in your private Walle system (`~/.claude/`):
 ```bash
 cd ~/.claude
 # Make improvements, add features, test thoroughly
@@ -173,11 +173,11 @@ ELEVENLABS_API_KEY=a1b2c3d4e5f6
 
 ### Mistake 3: Overwriting Protected Files
 ```bash
-# ❌ Copied Kai's README to PAI
+# ❌ Copied Walle's README to PAI
 cp ~/.claude/../README.md ~/Projects/PAI/README.md
 ```
 
-**Problem:** PAI's README explains public template, Kai's README is private
+**Problem:** PAI's README explains public template, Walle's README is private
 
 **Solution:** Check `.pai-protected.json` before copying
 
@@ -288,10 +288,10 @@ A: Immediately rotate the API keys, then force-push to remove from history (or c
 
 ## 🚀 Example: Syncing a New Skill
 
-Complete example of adding a new skill from Kai to PAI:
+Complete example of adding a new skill from Walle to PAI:
 
 ```bash
-# 1. Copy skill from Kai to PAI
+# 1. Copy skill from Walle to PAI
 cp -r ~/.claude/skills/my-new-skill ~/Projects/PAI/.claude/skills/
 
 # 2. Sanitize the skill's SKILL.md
@@ -322,6 +322,6 @@ git push origin main
 
 ---
 
-**Remember:** PAI is public. Kai is private. The protection system helps keep them separate while allowing you to share improvements with the community.
+**Remember:** PAI is public. Walle is private. The protection system helps keep them separate while allowing you to share improvements with the community.
 
 🤖 **Happy syncing!**

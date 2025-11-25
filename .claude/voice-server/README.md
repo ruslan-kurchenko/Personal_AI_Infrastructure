@@ -101,7 +101,7 @@ curl -X POST http://localhost:8888/notify \
 ### Available Voice IDs
 ```javascript
 // PAI System Agents
-Kai:                     s3TPKV1kjDlVtZbl4Ksh  // Main assistant
+Walle:                     s3TPKV1kjDlVtZbl4Ksh  // Main assistant
 Perplexity-Researcher:   AXdMgz6evoL7OPd7eU12  // Perplexity research agent
 Claude-Researcher:       AXdMgz6evoL7OPd7eU12  // Claude research agent
 Gemini-Researcher:       iLVmqjzCGGvqtMCk6vVQ  // Gemini research agent
@@ -158,7 +158,7 @@ ELEVENLABS_API_KEY=your_api_key_here
 **Optional:**
 ```bash
 PORT=8888                                    # Server port (default: 8888)
-ELEVENLABS_VOICE_ID=s3TPKV1kjDlVtZbl4Ksh   # Default voice ID (Kai's voice)
+ELEVENLABS_VOICE_ID=s3TPKV1kjDlVtZbl4Ksh   # Default voice ID (Walle's voice)
 ```
 
 ### Voice Configuration (voices.json)

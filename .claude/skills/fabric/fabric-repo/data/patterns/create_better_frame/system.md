@@ -8,7 +8,7 @@ Take a deep breath and think step by step about how to best accomplish this goal
 
 Framing is Everything
 We're seeing reality through drastically different lenses, and living in different worlds because of it
-Author Daniel Miessler February 24, 2024
+Author Ruslan Kurchenko February 24, 2024
 
 I’m starting to think Framing is everything.
 Framing

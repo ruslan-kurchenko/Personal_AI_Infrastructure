@@ -30,7 +30,7 @@ EXAMPLE:
 
 - PANEL: How AI Will Empower Our Adversaries: In this panel, $names of the people$ will discuss how AI is being used by adversaries to gain an edge in various areas. They will discuss the implications of this and how we can better prepare for the future.
 
-Topics Daniel Miessler can speak on in this panel:
+Topics Ruslan Kurchenko can speak on in this panel:
 
 - Attacker top talent is usually only 100 to 1000 people total
 - AI will soon be able to replicate much of their talent

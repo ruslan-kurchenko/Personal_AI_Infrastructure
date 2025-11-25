@@ -1,6 +1,6 @@
 # Skill Templates
 
-This directory contains templates for creating new skills in Kai's personal AI infrastructure.
+This directory contains templates for creating new skills in Walle's personal AI infrastructure.
 
 ## Available Templates
 

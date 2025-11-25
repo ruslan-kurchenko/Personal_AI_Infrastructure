@@ -1,19 +1,19 @@
 # Visual Aphorisms & Quote Cards Workflow
 
-**Daniel's aphorisms as shareable visual quote cards using UL aesthetic.**
+**Ruslan's aphorisms as shareable visual quote cards using UL aesthetic.**
 
-Creates **VISUAL APHORISM CARDS** — Daniel's insights and quotes as shareable square images with massive typography and minimal hand-drawn accents.
+Creates **VISUAL APHORISM CARDS** — Ruslan's insights and quotes as shareable square images with massive typography and minimal hand-drawn accents.
 
 ---
 
 ## Purpose
 
-Visual aphorism cards turn Daniel's memorable one-liners into shareable social media content. These are **typographic statements with personality** — the quote IS the visual, with subtle editorial accents.
+Visual aphorism cards turn Ruslan's memorable one-liners into shareable social media content. These are **typographic statements with personality** — the quote IS the visual, with subtle editorial accents.
 
 **Use this workflow for:**
 - Social media quote cards (LinkedIn, Instagram, X)
 - Newsletter pull quotes
-- Daniel's aphorisms as standalone images
+- Ruslan's aphorisms as standalone images
 - Thought leadership visuals
 - "HUMANS NEED ENTROPY" style statements
 - Memorable insights amplified visually
@@ -31,7 +31,7 @@ Visual aphorism cards turn Daniel's memorable one-liners into shareable social m
 4. **Square format** — 1:1 for social media
 5. **High contrast** — Black text on light, or white text on dark
 6. **Hand-lettered quality** — Imperfect typography, not digital font
-7. **Daniel's voice** — Punchy, memorable, thought-provoking
+7. **Ruslan's voice** — Punchy, memorable, thought-provoking
 
 ---
 
@@ -77,7 +77,7 @@ Deep Purple #4A148C — Bold brand (white text)
 **Choose the quote:**
 
 1. **What's the aphorism?**
-   - Daniel's exact quote
+   - Ruslan's exact quote
    - Must be punchy and memorable
    - Ideal length: 2-8 words (fits large on card)
 
@@ -92,7 +92,7 @@ Deep Purple #4A148C — Bold brand (white text)
 
 **Output:**
 ```
-APHORISM: "[Daniel's quote in all-caps]"
+APHORISM: "[Ruslan's quote in all-caps]"
 LENGTH: [X words]
 
 INSIGHT: [Why this quote resonates]
@@ -147,7 +147,7 @@ COLOR SCHEME:
 - Text: [Black / Purple / White]
 - Background: [Cream / White / Black / Purple]
 - Accent: [Purple / Teal]
-- Kai signature: Charcoal
+- Walle signature: Charcoal
 ```
 
 ---
@@ -200,7 +200,7 @@ COLOR USAGE:
 - Background: [Color choice] — flat solid fill
 - Typography: [Color choice] — high contrast with background
 - Accent element: [Purple or Teal]
-- Kai signature: Charcoal (#2D2D2D) small in corner
+- Walle signature: Charcoal (#2D2D2D) small in corner
 
 CRITICAL REQUIREMENTS:
 - Typography is HERO (quote fills 80-90% of frame)
@@ -212,7 +212,7 @@ CRITICAL REQUIREMENTS:
 - No gradients, flat colors only
 - Shareable social media quality
 
-Sign "Kai" small in bottom right corner in charcoal (#2D2D2D).
+Sign "Walle" small in bottom right corner in charcoal (#2D2D2D).
 ```
 
 ---
@@ -328,7 +328,7 @@ open /path/to/aphorism.png
 **Key Principle:**
 - **Typography IS the visual** — Everything else is subtle support
 - Shareable, memorable, instantly readable
-- Daniel's voice amplified visually
+- Ruslan's voice amplified visually
 
 ---
 

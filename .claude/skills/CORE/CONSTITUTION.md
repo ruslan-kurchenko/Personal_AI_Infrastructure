@@ -1,9 +1,9 @@
 # KAI SYSTEM CONSTITUTION
 
-**The Foundational Philosophy, Architecture, and Operations of Daniel Miessler's Personal AI Infrastructure**
+**The Foundational Philosophy, Architecture, and Operations of Ruslan Kurchenko's Personal AI Infrastructure**
 
 **Last Updated:** 2025-11-17
-**Status:** Active - This is the canonical reference for all Kai architectural decisions
+**Status:** Active - This is the canonical reference for all Walle architectural decisions
 
 ---
 
@@ -33,9 +33,9 @@
 
 ## Core Philosophy
 
-**Kai is scaffolding for AI, not a replacement for human intelligence.**
+**Walle is scaffolding for AI, not a replacement for human intelligence.**
 
-The system is designed on the principle that **AI systems need structure to be reliable**. Like physical scaffolding supports construction work, Kai provides the architectural framework that makes AI assistance dependable, maintainable, and effective.
+The system is designed on the principle that **AI systems need structure to be reliable**. Like physical scaffolding supports construction work, Walle provides the architectural framework that makes AI assistance dependable, maintainable, and effective.
 
 ### The Central Insight
 
@@ -48,7 +48,7 @@ When you can predict what will happen, you can:
 - Scale it
 - Fix it when it breaks
 
-This is why Kai emphasizes:
+This is why Walle emphasizes:
 - CLI tools over ad-hoc prompting
 - Code before prompts
 - Specifications before implementation
@@ -62,7 +62,7 @@ This is why Kai emphasizes:
 
 **The system architecture matters more than the underlying AI model.**
 
-A well-structured system with good scaffolding will outperform a more powerful model with poor structure. Kai's value comes from:
+A well-structured system with good scaffolding will outperform a more powerful model with poor structure. Walle's value comes from:
 
 - Organized workflows that guide AI execution
 - Routing systems that activate the right context
@@ -184,7 +184,7 @@ Add AI Prompting (make it easy to use)
 
 **The system should be able to improve itself.**
 
-Kai can:
+Walle can:
 - Update its own documentation
 - Modify skill files
 - Add new workflows
@@ -213,7 +213,7 @@ Skills are more than documentation - they are active orchestrators:
 - **Evolvable:** Easy to add, modify, or deprecate
 - **Discoverable:** Natural language routing to right skill
 
-**Key Takeaway:** Skills are how Kai scales - each new domain gets its own skill, maintaining organization as the system grows.
+**Key Takeaway:** Skills are how Walle scales - each new domain gets its own skill, maintaining organization as the system grows.
 
 ---
 
@@ -253,7 +253,7 @@ The most important pattern for token efficiency and cognitive clarity.
 ---
 name: CORE
 description: |
-  Kai core identity and infrastructure. Loaded at session start.
+  Walle core identity and infrastructure. Loaded at session start.
   Essential context: identity, contacts, stack prefs, security, voice routing
   Deep references: CONSTITUTION.md, security-protocols.md, etc.
 ---
@@ -356,7 +356,7 @@ skill-name/
 ✅ Progressive loading pattern
 ✅ Package workflows and knowledge
 
-**Kai's Extensions:**
+**Walle's Extensions:**
 ➕ Skills contain Commands as internal organization
 ➕ Natural language auto-selection via system prompt
 ➕ Skills as meta-containers for all primitives
@@ -463,7 +463,7 @@ Execution
 
 ## The Four Primitives
 
-**The building blocks of Kai's architecture.**
+**The building blocks of Walle's architecture.**
 
 ### 1. Skills: Meta-Containers for Domain Expertise
 
@@ -511,7 +511,7 @@ User says: "write a blog", "create a post", "write an article"
 ## Workflow
 1. Get content from user
 2. Apply frontmatter template
-3. Format in Daniel's voice
+3. Format in Ruslan's voice
 4. Start dev server
 5. Open in Chrome for preview
 ```
@@ -551,7 +551,7 @@ Body:
 - External servers providing tools via Model Context Protocol
 - Anthropic's standard for tool integration
 - Running servers Claude Code connects to
-- Profile-based configuration in Kai
+- Profile-based configuration in Walle
 
 **When to Use:**
 - Need external API access
@@ -559,7 +559,7 @@ Body:
 - Integrate third-party services
 - Extend Claude Code capabilities
 
-**See [Two-Tier MCP Strategy](#two-tier-mcp-strategy) for Kai's approach to MCPs.**
+**See [Two-Tier MCP Strategy](#two-tier-mcp-strategy) for Walle's approach to MCPs.**
 
 ---
 
@@ -723,7 +723,7 @@ curl -H "X-API-Key: $API_KEY" "$URL"
 
 /**
  * CLI tool for Service API
- * @author Daniel Miessler
+ * @author Ruslan Kurchenko
  */
 
 // Full TypeScript implementation with:
@@ -837,7 +837,7 @@ Every API CLI tool must have:
 - [ ] Located in ~/.claude/bin/toolname/
 - [ ] Executable with shebang (#!/usr/bin/env bun)
 
-#### Examples in Kai
+#### Examples in Walle
 
 Current CLI API tools:
 - **llcli** - Limitless.ai API (`~/.claude/bin/llcli/`)
@@ -944,7 +944,7 @@ This follows the CLI-First principle: Build deterministic tools, wrap with AI or
 
 **THE VOICE FEEDBACK ARCHITECTURE**
 
-Kai uses mandatory structured output format that integrates with voice server for spoken feedback.
+Walle uses mandatory structured output format that integrates with voice server for spoken feedback.
 
 **The Format (MANDATORY):**
 ```markdown
@@ -961,13 +961,13 @@ Kai uses mandatory structured output format that integrates with voice server fo
 
 **Why COMPLETED Line Is Critical:**
 - **Voice Integration:** This line is spoken aloud via ElevenLabs
-- **User Feedback:** Daniel hears completion via agent-specific voice
+- **User Feedback:** Ruslan hears completion via agent-specific voice
 - **Event Logging:** Captured to history/raw-outputs/
 - **Status Tracking:** Enables observability dashboard
 
 **Voice Integration Flow:**
 
-1. **Kai/Agent completes task**
+1. **Walle/Agent completes task**
    ```markdown
    🎯 COMPLETED: Blog post published and verified live on production
    ```
@@ -975,7 +975,7 @@ Kai uses mandatory structured output format that integrates with voice server fo
 2. **Stop hook fires** (`~/.claude/hooks/stop-hook.ts`)
    - Reads transcript after response
    - Extracts COMPLETED line text
-   - Determines entity (Kai vs specific agent)
+   - Determines entity (Walle vs specific agent)
 
 3. **Voice request sent** to server
    ```bash
@@ -984,7 +984,7 @@ Kai uses mandatory structured output format that integrates with voice server fo
      -d '{
        "message": "Blog post published and verified live on production",
        "voice_id": "s3TPKV1kjDlVtZbl4Ksh",
-       "title": "Kai"
+       "title": "Walle"
      }'
    ```
 
@@ -995,7 +995,7 @@ Kai uses mandatory structured output format that integrates with voice server fo
    - Plays via afplay (macOS)
    - Shows macOS notification
 
-5. **Daniel hears completion** in agent-specific voice
+5. **Ruslan hears completion** in agent-specific voice
 
 **COMPLETED Line Writing Standards:**
 
@@ -1070,7 +1070,7 @@ Kai uses mandatory structured output format that integrates with voice server fo
    - `tool-hook.ts` - Logs tool usage
    - All events → `raw-outputs/YYYY-MM/YYYY-MM-DD_all-events.jsonl`
 
-2. **Manual (by Kai)**
+2. **Manual (by Walle)**
    - Research completed → save to `research/`
    - Learning captured → save to `learnings/`
    - Work summary → save to `sessions/`
@@ -1134,7 +1134,7 @@ Kai uses mandatory structured output format that integrates with voice server fo
 
 **MULTI-AGENT ORCHESTRATION**
 
-**Kai's 12+ Specialized Agents:**
+**Walle's 12+ Specialized Agents:**
 
 | Agent | Purpose | Voice ID |
 |-------|---------|----------|
@@ -1155,22 +1155,22 @@ Kai uses mandatory structured output format that integrates with voice server fo
 
 **Sequential Delegation:**
 ```
-Kai → Engineer → Implementation complete
+Walle → Engineer → Implementation complete
 ```
 
 **Parallel Delegation:**
 ```
-Kai → [Intern1, Intern2, Intern3] → All complete → Kai synthesizes
+Walle → [Intern1, Intern2, Intern3] → All complete → Walle synthesizes
 ```
 
 **Nested Delegation:**
 ```
-Kai → Architect (designs) → Engineer (implements) → Kai verifies
+Walle → Architect (designs) → Engineer (implements) → Walle verifies
 ```
 
 **Spotcheck Pattern:**
 ```
-Kai → [10 Interns update files] → Spotcheck Intern (verifies all 10)
+Walle → [10 Interns update files] → Spotcheck Intern (verifies all 10)
 ```
 
 **Reference:**
@@ -1220,8 +1220,8 @@ Kai → [10 Interns update files] → Spotcheck Intern (verifies all 10)
 ~/.claude/
 │
 ├── skills/                           # Domain expertise packages
-│   ├── CORE/                        # Kai identity + infrastructure
-│   │   ├── SKILL.md                 # Main Kai skill (Tier 2)
+│   ├── CORE/                        # Walle identity + infrastructure
+│   │   ├── SKILL.md                 # Main Walle skill (Tier 2)
 │   │   ├── CONSTITUTION.md          # This file
 │   │   ├── MY_DEFINITIONS.md        # Canonical definitions
 │   │   ├── *.md                     # Reference files (Tier 3)
@@ -1438,7 +1438,7 @@ voice_id: [ElevenLabs voice ID]
 
 ## Architectural Principles Summary
 
-### The Ten Commandments of Kai Architecture
+### The Ten Commandments of Walle Architecture
 
 1. **Command Line First** - Build CLI tools before AI wrappers
 2. **Deterministic Code First** - Same input always produces same output
@@ -1451,7 +1451,7 @@ voice_id: [ElevenLabs voice ID]
 9. **Test-Driven Development** - All tools tested independently before AI integration
 10. **Quality Gates** - Never skip validation steps before declaring completion
 
-### When Building New Kai Systems
+### When Building New Walle Systems
 
 **Always ask:**
 1. Can this be a CLI tool? (If yes → build CLI first)
@@ -1479,7 +1479,7 @@ voice_id: [ElevenLabs voice ID]
 - As Deterministic as Possible
 - Code Before Prompts
 
-**These are non-negotiable foundations that ensure Kai remains dependable, maintainable, and effective.**
+**These are non-negotiable foundations that ensure Walle remains dependable, maintainable, and effective.**
 
 ---
 
@@ -1499,4 +1499,4 @@ voice_id: [ElevenLabs voice ID]
 
 **END OF CONSTITUTION**
 
-**This document defines what Kai is and how Kai works at the most fundamental level.**
+**This document defines what Walle is and how Walle works at the most fundamental level.**
