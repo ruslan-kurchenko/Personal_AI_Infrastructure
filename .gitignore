@@ -70,3 +70,5 @@ credentials/
 .claude/statsig/
 .claude/todos/
 .claude/agent-sessions.json
+.claude/file-history/
+.claude/history.jsonl

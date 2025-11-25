@@ -54,11 +54,11 @@
       "description": "Stripe payment processing and financial operations"
     },
     "Ref": {
-      "command": "bunx",
-      "args": [
-        "@refdotai/mcp"
-      ],
-      "description": "Documentation search and reading from public sources and private repositories"
+          "type": "http",
+          "url": "https://api.ref.tools/mcp",
+          "headers": {
+            "x-ref-api-key": "ref-19fd8dfe93d6f99582ff"
+          }
     },
     "apify": {
       "command": "bunx",

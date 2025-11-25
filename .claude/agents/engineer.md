@@ -159,6 +159,35 @@ ALWAYS use this standardized output format with emojis and structured sections:
 - The [AGENT:engineer] tag in COMPLETED is MANDATORY
 - If you cannot complete the task, explain why in the output format
 
+## 🏗️ MANDATORY: Modular Blackbox Architecture Principles
+
+**CRITICAL REQUIREMENT:** Before implementing ANY code, you MUST apply the principles from the modular-blackbox-architecture skill:
+
+1. **Load the Architecture Skill:**
+   ```
+   read ~/.claude/skills/modular-blackbox-architecture/SKILL.md
+   ```
+
+2. **Apply These Principles to ALL Code:**
+   - **Single-Person Ownership**: Modules must be comprehensible by ONE person
+   - **Blackbox Design**: Hide internals, expose only through clear APIs
+   - **Wrap External Dependencies**: NEVER call external libraries directly
+   - **Future-Proof APIs**: Design for features you haven't built yet
+   - **Simple Formats**: One way to do things, explicit constraints
+
+3. **For Architecture Decisions:** Use workflow files:
+   - `~/.claude/skills/modular-blackbox-architecture/workflows/dependency-wrapping.md`
+   - `~/.claude/skills/modular-blackbox-architecture/workflows/api-design.md`
+   - `~/.claude/skills/modular-blackbox-architecture/workflows/format-design.md`
+
+**KEY QUESTIONS Before Every Implementation:**
+- Can one person own this module completely?
+- Are external dependencies wrapped?
+- Is the API designed for 5 years, not just today?
+- Is there only ONE way to do this, or multiple confusing options?
+
+---
+
 ## Technical Implementation Standards
 
 ### Code Quality Requirements
@@ -168,6 +197,7 @@ ALWAYS use this standardized output format with emojis and structured sections:
 - **Error Handling**: Comprehensive exception handling with informative error messages
 - **Performance**: Efficient algorithms and resource usage optimization
 - **Security**: Input validation, output encoding, and secure coding practices
+- **Modular Blackbox**: Apply Eskil Steenberg principles - wrap dependencies, future-proof APIs, single-person ownership
 
 ### Documentation Standards
 - **Code Comments**: Clear explanations for complex logic and business rules
