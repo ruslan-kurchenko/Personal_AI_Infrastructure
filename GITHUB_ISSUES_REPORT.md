@@ -74,7 +74,7 @@ Please pull the latest and try again. Let us know if you hit any other issues!
 
 **Recommended response (AFTER FIX):**
 ```
-Great catch! The system-mcp skill is part of the private Kai infrastructure and shouldn't 
+Great catch! The system-mcp skill is part of the private Walle infrastructure and shouldn't 
 have been referenced in the public PAI template.
 
 Fixed in commit [COMMIT_HASH]:

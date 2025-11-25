@@ -39,7 +39,7 @@ PAI (Personal AI Infrastructure) is a template for building your own AI-powered 
 
 ---
 
-## 🔄 **PAI vs Kai: What You Get**
+## 🔄 **PAI vs Walle: What You Get**
 
 **PAI (this repository) provides:**
 - ✅ Skills/agents/hooks architecture
@@ -49,13 +49,13 @@ PAI (Personal AI Infrastructure) is a template for building your own AI-powered 
 - ✅ Voice server skeleton
 - ⚙️ **Requires:** API key configuration per skill
 
-**Kai (Daniel's private system) adds:**
+**Walle (Ruslan's private system) adds:**
 - 🔒 Personal data, contacts, and history
 - 🔒 Additional private skills and workflows
 - 🔒 Customized agent personalities and voices
 - 🔒 Production integrations and automations
 
-**Think of it this way:** PAI is the scaffolding. You build your own "Kai" on top of it.
+**Think of it this way:** PAI is the scaffolding. You build your own "Walle" on top of it.
 
 **After setup, PAI should:**
 - ✅ Execute hooks without errors
@@ -119,6 +119,54 @@ claude-code
 **That's it!** The CORE skill loads at session start and provides all PAI functionality.
 
 📚 **For detailed setup:** See `docs/QUICKSTART.md`
+
+---
+
+## ⚙️ **Configuration & Personalization**
+
+PAI can be personalized via environment variables in `~/.claude/settings.json`:
+
+### Quick Personalization
+
+Add your identity to the `env` block in `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "PAI_USER_NAME": "Your Full Name",
+    "PAI_AGENT_NAME": "Your Assistant Name",
+    "PAI_USER_EMAIL": "your.email@example.com",
+    "PAI_VOICE_ID": "your_elevenlabs_voice_id"
+  }
+}
+```
+
+### Available Configuration
+
+| Variable | Purpose | Required | Default |
+|----------|---------|----------|---------|
+| `PAI_USER_NAME` | Your name | No | "User" |
+| `PAI_AGENT_NAME` | Your assistant's name | No | "Assistant" |
+| `PAI_USER_EMAIL` | Your email | No | "" |
+| `PAI_USER_LOCATION_CITY` | Your city | No | "" |
+| `PAI_USER_LOCATION_COUNTRY` | Your country | No | "" |
+| `PAI_USER_TIMEZONE` | Your timezone | No | "" |
+| `PAI_USER_ROLE` | Your job title | No | "" |
+| `PAI_USER_ORGANIZATION` | Your company | No | "" |
+| `PAI_VOICE_ID` | ElevenLabs voice ID | No | "" |
+
+See `.claude/.env.example` for complete configuration options.
+
+### How It Works
+
+1. **Core files** (SKILL.md, CONSTITUTION.md) are de-personalized and generic
+2. **Template file** (identity.md) contains `{{VARIABLES}}` placeholders
+3. **Session start hook** substitutes variables with your env var values
+4. **Your personalized context** loads automatically
+
+**Guides:**
+- **[FORKING_AND_PERSONALIZING.md](./docs/FORKING_AND_PERSONALIZING.md)** - Complete fork and customization guide
+- **[EXTENSION_PATTERN.md](./docs/EXTENSION_PATTERN.md)** - Create custom context hooks (k-health pattern)
 
 ---
 

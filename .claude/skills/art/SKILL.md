@@ -106,7 +106,7 @@ Creates editorial-quality visuals for ALL content types using the UL color schem
 - User says 'framework', '2x2 matrix', 'mental model', 'Venn diagram'
 - User says 'quadrant model', 'conceptual model', 'thinking framework'
 - Need structured mental model or decision framework
-- "The Daniel Miessler Framework for X" style visuals
+- "The {{USER_NAME}} Framework for X" style visuals
 
 **Key:** Structured conceptual diagrams (matrices, Venns, pyramids)
 
@@ -149,7 +149,7 @@ Creates editorial-quality visuals for ALL content types using the UL color schem
 **When to use:**
 - User says 'aphorism', 'quote card', 'visual quote', 'make this a card'
 - User says 'social media quote', 'typography card', 'statement'
-- Need Daniel's quote as shareable visual
+- Need {{USER_NAME}}'s quote as shareable visual
 - Newsletter pull quotes, social media content
 
 **Key:** Massive typography with minimal accent illustration
@@ -270,7 +270,7 @@ This defines the Anthropic editorial style:
 |-------|-----|-------|
 | Deep Purple | #4A148C | Brand accent - REQUIRED and MUST BE NOTICEABLE |
 | Deep Teal | #00796B | Secondary accent option |
-| Charcoal | #2D2D2D | Kai signature, subtle details |
+| Charcoal | #2D2D2D | {{AGENT_NAME}} signature, subtle details |
 
 **CRITICAL COLOR REQUIREMENT:**
 - Purple (#4A148C) MUST be visible and noticeable in every image
@@ -296,8 +296,8 @@ This defines the Anthropic editorial style:
 4. **Aspect Ratio:** Square 1:1 format (NOT 16:9 rectangle)
 5. **Elements:** 2-3 abstract elements maximum
 6. **Lines:** Variable weight, imperfect, wobbly, brush-like texture
-7. **NO TEXT** (except Kai signature)
-8. **KAI SIGNATURE:** Small subtle "Kai" in charcoal (#2D2D2D) bottom right
+7. **NO TEXT** (except {{AGENT_NAME}} signature)
+8. **AGENT SIGNATURE:** Small subtle "{{AGENT_NAME}}" in charcoal (#2D2D2D) bottom right
 9. **COLOR PRESENCE:** Purple (#4A148C) and/or Teal (#00796B) MUST be visible and noticeable as accents
 
 ---
@@ -419,7 +419,7 @@ CRITICAL:
 - NO glossy/shiny surfaces
 - Lines should be imperfect, hand-drawn quality
 
-Sign "Kai" small in charcoal (#2D2D2D) bottom right corner.
+Sign "{{AGENT_NAME}}" small in charcoal (#2D2D2D) bottom right corner.
 NO other text.
 ```
 
@@ -430,7 +430,7 @@ NO other text.
 These demonstrate the conceptual translation pattern:
 
 ### Example: "Leave the Em Dash Alone"
-**Narrative Arc (from 24 items):** AI copies human creativity → people react by abandoning what they love → Daniel refuses to be evicted from his own preferences → standing ground on authentic choices
+**Narrative Arc (from 24 items):** AI copies human creativity → people react by abandoning what they love → {{USER_NAME}} refuses to be evicted from their own preferences → standing ground on authentic choices
 **Visual Concept:** Robot hand and human hand pulling opposite ends of an em dash (tug-of-war) — shows CONFLICT IN PROGRESS
 **Why:** Captures the ongoing struggle/ownership battle, not just endpoint
 

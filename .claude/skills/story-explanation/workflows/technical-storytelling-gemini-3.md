@@ -188,7 +188,7 @@ SELECT THE SINGLE BEST TECHNICAL FRAMING that:
 - Shows how understanding deepened over time
 - Makes technical concepts accessible WITHOUT losing precision
 - Would make technical professionals excited to share
-- Feels natural in Daniel's voice (first person, curious, precise)
+- Feels natural in Ruslan's voice (first person, curious, precise)
 
 TECHNICAL CONTENT TO ANALYZE:
 [PASTE PAPERS, DOCS, CODE, ARCHITECTURE]"
@@ -241,7 +241,7 @@ Based on Gemini 3's selected framing and verified technical accuracy, generate t
 - Compelling technical hook in first person
 - Use precise descriptors: "paper", "algorithm", "architecture", "system", "implementation"
 - Set up the technical problem or evolution
-- Daniel's voice: curious, precise, engaged
+- Ruslan's voice: curious, precise, engaged
 
 **Example:**
 ```
@@ -256,7 +256,7 @@ In this seminal paper, Leslie Lamport introduces Paxos, a distributed consensus 
 - **Technical depth**: Include specific algorithms, data structures, system properties
 - **Accessible sophistication**: Technical accuracy WITHOUT unnecessary jargon
 - **Varied sentence length**: 8-20 words, natural rhythm
-- **First person voice**: Daniel explaining something technically fascinating
+- **First person voice**: Ruslan explaining something technically fascinating
 - **No bullet points**: Narrative sentences with line breaks
 - **Stick to facts**: Technical claims must be verifiable
 
@@ -432,7 +432,7 @@ Present the complete technical narrative with:
 - Clear technical hook (opening)
 - Detailed technical journey (body)
 - Significant technical insight (closing)
-- Daniel's casual but precise voice
+- Ruslan's casual but precise voice
 - Line breaks between sentences for readability
 - Optional: Inline links to technical sources
 - Optional: Technical metadata (paper citations, implementations)
@@ -457,7 +457,7 @@ Present the complete technical narrative with:
    - Accessible without oversimplification
    - Technical depth without unnecessary jargon
 
-4. **Daniel's Technical Voice:**
+4. **Ruslan's Technical Voice:**
    - First person, curious, engaged
    - Casual explanation of complex concepts
    - Genuine fascination with HOW things work

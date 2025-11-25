@@ -166,7 +166,7 @@ fabric "your text here" -p [pattern]
 - `extract_article_wisdom` - Article-specific wisdom
 - `extract_book_ideas` - Book ideas
 - `extract_insights` - General insights
-- `extract_insights_dm` - Daniel Miessler style insights
+- `extract_insights_dm` - Ruslan Kurchenko style insights
 - `extract_main_idea` - Core message
 - `extract_recommendations` - Recommendations
 - `extract_ideas` - Ideas from content

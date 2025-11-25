@@ -2,19 +2,19 @@
 
 **Hand-drawn frameworks, mental models, and conceptual diagrams using UL aesthetic.**
 
-Creates **VISUAL FRAMEWORKS** — Daniel's signature mental models illustrated as memorable diagrams with editorial hand-drawn style.
+Creates **VISUAL FRAMEWORKS** — {{USER_NAME}}'s signature mental models illustrated as memorable diagrams with editorial hand-drawn style.
 
 ---
 
 ## Purpose
 
-Visual frameworks illustrate mental models, thinking frameworks, and conceptual relationships. These are **Daniel's signature frameworks** made visual — 2x2 matrices, Venn diagrams, conceptual maps with personality and editorial style.
+Visual frameworks illustrate mental models, thinking frameworks, and conceptual relationships. These are **{{USER_NAME}}'s signature frameworks** made visual — 2x2 matrices, Venn diagrams, conceptual maps with personality and editorial style.
 
 **Use this workflow for:**
 - 2x2 matrices and quadrant models
 - Venn diagrams with editorial flair
 - Conceptual relationship maps
-- "The Daniel Miessler Framework for X"
+- "The {{USER_NAME}} Framework for X"
 - Mental models and thinking tools
 - Decision frameworks
 
@@ -89,7 +89,7 @@ White #FFFFFF or Light Cream #F5E6D3
 ```
 FRAMEWORK TYPE: [2x2 Matrix / Venn Diagram / Pyramid / etc.]
 
-FRAMEWORK NAME: "The [Daniel's Name] Framework for [Topic]"
+FRAMEWORK NAME: "The [{{USER_NAME}}] Framework for [Topic]"
 
 DIMENSIONS:
 - X-axis: [Concept] (Low → High)
@@ -241,7 +241,7 @@ CRITICAL REQUIREMENTS:
 - Editorial illustration aesthetic maintained
 - Conceptually clear and memorable
 
-Sign "Kai" small in bottom right corner in charcoal (#2D2D2D).
+Sign "{{AGENT_NAME}}" small in bottom right corner in charcoal (#2D2D2D).
 ```
 
 ---
@@ -354,7 +354,7 @@ open /path/to/framework.png
 - Text: Charcoal (except emphasized annotations)
 
 **Key Principle:**
-- This becomes THE reference image people remember for Daniel's framework
+- This becomes THE reference image people remember for {{USER_NAME}}'s framework
 - Must be conceptually clear AND visually distinctive
 
 ---

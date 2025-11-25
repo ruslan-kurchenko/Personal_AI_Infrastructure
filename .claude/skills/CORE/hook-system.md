@@ -134,7 +134,7 @@ Claude Code supports the following hook events (from `~/.claude/hooks/lib/observ
 ---
 
 ### 4. **Stop**
-**When:** Main agent (Kai) completes a response
+**When:** Main agent (Walle) completes a response
 **Use Cases:**
 - Voice notifications for task completion
 - Capture work summaries and learnings
@@ -323,7 +323,7 @@ Hooks have access to all environment variables from `~/.claude/settings.json` `"
 {
   "env": {
     "PAI_DIR": "/Users/daniel/.claude",
-    "DA": "Kai",
+    "DA": "Walle",
     "MCP_API_KEY": "...",
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000"
   }
@@ -332,7 +332,7 @@ Hooks have access to all environment variables from `~/.claude/settings.json` `"
 
 **Key Variables:**
 - `PAI_DIR` - PAI installation directory (always `/Users/daniel/.claude`)
-- `DA` - Digital Assistant name ("Kai")
+- `DA` - Digital Assistant name ("Walle")
 - Hook scripts reference `${PAI_DIR}` in command paths
 
 ### Hook Configuration Structure
@@ -387,7 +387,7 @@ All hooks receive JSON data on stdin:
 
 ```typescript
 // stop-hook.ts pattern
-const completionMessage = extractKaiCompletion(lastMessage);
+const completionMessage = extractWalleCompletion(lastMessage);
 
 const payload = {
   title: 'PAI',
@@ -1079,4 +1079,4 @@ Events: All hooks send to /events endpoint
 
 **Last Updated:** 2025-11-01
 **Status:** Production - All hooks active and tested
-**Maintainer:** Daniel Miessler (maintainer@example.com)
+**Maintainer:** Ruslan Kurchenko (maintainer@example.com)

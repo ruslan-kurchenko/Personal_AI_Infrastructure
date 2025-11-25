@@ -4,30 +4,45 @@
  * load-core-context.ts
  *
  * Automatically loads your CORE skill context at session start by reading and injecting
- * the CORE SKILL.md file contents directly into Claude's context as a system-reminder.
+ * the CORE SKILL.md AND identity.md files directly into Claude's context as a system-reminder.
  *
  * Purpose:
- * - Read CORE SKILL.md file content
- * - Output content as system-reminder for Claude to process
+ * - Read CORE SKILL.md file content (system configuration)
+ * - Read CORE identity.md file content (personal identity)
+ * - Output combined content as system-reminder for Claude to process
  * - Ensure complete context (contacts, preferences, security, identity) available at session start
  * - Bypass skill activation logic by directly injecting context
  *
  * Setup:
- * 1. Customize your ~/.claude/skills/CORE/SKILL.md with your personal context
- * 2. Add this hook to settings.json SessionStart hooks
- * 3. Ensure PAI_DIR environment variable is set (defaults to $HOME/.claude)
+ * 1. Customize your ~/.claude/skills/CORE/SKILL.md with system configuration
+ * 2. Customize your ~/.claude/skills/CORE/identity.md with personal identity
+ * 3. Add this hook to settings.json SessionStart hooks
+ * 4. Ensure PAI_DIR environment variable is set (defaults to $HOME/.claude)
  *
  * How it works:
  * - Runs at the start of every Claude Code session
  * - Skips execution for subagent sessions (they don't need CORE context)
- * - Reads your CORE SKILL.md file
- * - Injects content as <system-reminder> which Claude processes automatically
+ * - Reads your CORE SKILL.md file AND identity.md file
+ * - Injects combined content as <system-reminder> which Claude processes automatically
  * - Gives your AI immediate access to your complete personal context
  */
 
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { PAI_DIR, SKILLS_DIR } from './lib/pai-paths';
+import {
+  USER_NAME,
+  AGENT_NAME,
+  USER_EMAIL,
+  USER_LOCATION_CITY,
+  USER_LOCATION_COUNTRY,
+  USER_TIMEZONE,
+  USER_ROLE,
+  USER_ORGANIZATION,
+  VOICE_ID,
+  getUserLocation,
+  validateCoreIdentity
+} from './lib/pai-identity';
 
 async function main() {
   try {
@@ -42,8 +57,12 @@ async function main() {
       process.exit(0);
     }
 
-    // Get CORE skill path using PAI paths library
+    // Validate core identity configuration (warns if using defaults)
+    validateCoreIdentity();
+
+    // Get CORE skill paths using PAI paths library
     const coreSkillPath = join(SKILLS_DIR, 'CORE/SKILL.md');
+    const identityPath = join(SKILLS_DIR, 'CORE/identity.md');
 
     // Verify CORE skill file exists
     if (!existsSync(coreSkillPath)) {
@@ -52,12 +71,49 @@ async function main() {
       process.exit(1);
     }
 
-    console.error('📚 Reading CORE context from skill file...');
+    console.error('📚 Reading CORE context from skill files...');
 
     // Read the CORE SKILL.md file content
     const coreContent = readFileSync(coreSkillPath, 'utf-8');
-
     console.error(`✅ Read ${coreContent.length} characters from CORE SKILL.md`);
+
+    // Read the identity.md file content (optional - may not exist in all deployments)
+    let identityContent = '';
+    if (existsSync(identityPath)) {
+      identityContent = readFileSync(identityPath, 'utf-8');
+      console.error(`✅ Read ${identityContent.length} characters from identity.md`);
+
+      // Perform template substitution on identity content
+      const originalTemplateCount = (identityContent.match(/\{\{/g) || []).length;
+      identityContent = identityContent
+        // Core identity
+        .replace(/\{\{USER_NAME\}\}/g, USER_NAME)
+        .replace(/\{\{AGENT_NAME\}\}/g, AGENT_NAME)
+
+        // Optional identity fields (may be empty strings)
+        .replace(/\{\{USER_EMAIL\}\}/g, USER_EMAIL)
+        .replace(/\{\{USER_LOCATION_CITY\}\}/g, USER_LOCATION_CITY)
+        .replace(/\{\{USER_LOCATION_COUNTRY\}\}/g, USER_LOCATION_COUNTRY)
+        .replace(/\{\{USER_LOCATION\}\}/g, getUserLocation())
+        .replace(/\{\{USER_TIMEZONE\}\}/g, USER_TIMEZONE)
+        .replace(/\{\{USER_ROLE\}\}/g, USER_ROLE)
+        .replace(/\{\{USER_ORGANIZATION\}\}/g, USER_ORGANIZATION)
+
+        // Voice configuration
+        .replace(/\{\{VOICE_ID\}\}/g, VOICE_ID);
+
+      const remainingTemplates = (identityContent.match(/\{\{/g) || []).length;
+      console.error(`✅ Substituted ${originalTemplateCount} template variables (${remainingTemplates} remaining)`);
+    } else {
+      console.error(`ℹ️  identity.md not found - skipping personal identity context`);
+    }
+
+    // Build identity section if available
+    const identitySection = identityContent ? `
+--- PERSONAL IDENTITY (from ${identityPath}) ---
+${identityContent}
+---
+` : '';
 
     // Output the CORE content as a system-reminder
     // This will be injected into Claude's context at session start
@@ -71,7 +127,7 @@ The following context has been loaded from ${coreSkillPath}:
 ---
 ${coreContent}
 ---
-
+${identitySection}
 This context is now active for this session. Follow all instructions, preferences, and guidelines contained above.
 </system-reminder>`;
 

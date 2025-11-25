@@ -311,7 +311,7 @@ Every generated CLI must pass these gates:
 
 ### Why This Skill Exists
 
-Daniel repeatedly creates CLIs for APIs and tools. Each time:
+Ruslan repeatedly creates CLIs for APIs and tools. Each time:
 1. Starts with bash script
 2. Realizes it needs error handling
 3. Realizes it needs help text

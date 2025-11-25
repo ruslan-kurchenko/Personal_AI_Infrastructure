@@ -314,7 +314,7 @@ PHILOSOPHY:
 For more information, see ~/.claude/bin/{{CLI_NAME}}/README.md
 
 Version: 1.0.0
-Author: Daniel Miessler
+Author: Ruslan Kurchenko
 `);
 }
 
@@ -389,7 +389,7 @@ main().catch((error) => {
 # {{CLI_NAME}} - {{CLI_DESCRIPTION}}
 
 **Version:** 1.0.0
-**Author:** Daniel Miessler
+**Author:** Ruslan Kurchenko
 **Last Updated:** {{TODAY_DATE}}
 
 ---
@@ -500,7 +500,7 @@ See: ~/.claude/bin/{{CLI_NAME}}/README.md
     "help": "bun run {{CLI_NAME}}.ts --help"
   },
   "keywords": [{{KEYWORDS}}],
-  "author": "Daniel Miessler",
+  "author": "Ruslan Kurchenko",
   "license": "MIT",
   "dependencies": {}
 }

@@ -150,6 +150,6 @@ Skill Response:
 
 **Related Documentation:**
 - `~/.claude/skills/CORE/SKILL-STRUCTURE-AND-ROUTING.md` - Canonical structure guide
-- `~/.claude/skills/CORE/CONSTITUTION.md` - Overall Kai philosophy
+- `~/.claude/skills/CORE/CONSTITUTION.md` - Overall Walle philosophy
 
 **Last Updated:** 2025-11-23

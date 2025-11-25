@@ -63,7 +63,7 @@ Exactly 5 lines with 5-12 words per line:
 - Single line break between lines
 - No bullet points or numbers
 - No additional commentary
-- Daniel's casual, conversational voice
+- Ruslan's casual, conversational voice
 
 ## Implementation Steps
 
@@ -190,5 +190,5 @@ It means consciousness might not require biological brains after all.
 - The Foundry MCP service handles the AI processing
 - Your job is to detect input type, fetch content, and format output
 - Focus on the 5-12 word limit per line - this is non-negotiable
-- Use Daniel's voice: casual, direct, conversational
+- Use Ruslan's voice: casual, direct, conversational
 - No flowery language or journalistic clichés

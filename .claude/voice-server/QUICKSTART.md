@@ -80,7 +80,7 @@ The PAI system supports different voices for different agents:
 
 | Agent | Default Voice ID | Purpose |
 |-------|------------------|---------|
-| Kai | s3TPKV1kjDlVtZbl4Ksh | Main assistant voice |
+| Walle | s3TPKV1kjDlVtZbl4Ksh | Main assistant voice |
 | Perplexity-Researcher | AXdMgz6evoL7OPd7eU12 | Research agent |
 | Claude-Researcher | AXdMgz6evoL7OPd7eU12 | Research agent |
 | Engineer | kmSVBPu7loj4ayNinwWM | Development agent |

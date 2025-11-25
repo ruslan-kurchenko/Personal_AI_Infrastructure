@@ -256,7 +256,7 @@ CRITICAL REQUIREMENTS:
 - Professional deliverable quality (client-ready)
 - Recipe card proportions (vertical card layout)
 
-Sign "Kai" small in bottom right corner in charcoal (#2D2D2D).
+Sign "Walle" small in bottom right corner in charcoal (#2D2D2D).
 ```
 
 ---
@@ -335,7 +335,7 @@ open /path/to/recipe-card.png
 - **Layout:** Vertical 9:16
 - **Use:** Consulting deliverable
 
-### Example 2: "The Daniel Miessler Security Assessment Method"
+### Example 2: "The Ruslan Kurchenko Security Assessment Method"
 - **Steps:** Assets → Threats → Vulnerabilities → Mitigations → Validation
 - **Icons:** Treasure, storm, crack, shield, checkmark
 - **Color:** Purple on "Mitigations" (critical) and "Validation" (outcome)

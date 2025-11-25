@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "PAI Personal Data Protection Patterns - Patterns to detect personal data that should not be committed",
+  "version": "1.0.0",
+  "patterns": {
+    "personal_names": {
+      "description": "Personal names that should not appear in core files",
+      "patterns": [
+        "Ruslan Kurchenko",
+        "Ruslan's",
+        "Walle's Digital Assistant"
+      ],
+      "exceptions": [
+        "identity.md",
+        "settings.json",
+        ".env.example",
+        "FORKING_PAI.md",
+        "README.md"
+      ]
+    },
+    "email_addresses": {
+      "description": "Email addresses (personal data)",
+      "patterns": [
+        "ruslan.kurchenko@email.com",
+        "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}"
+      ],
+      "exceptions": [
+        "identity.md",
+        "settings.json",
+        ".env.example"
+      ]
+    },
+    "voice_ids": {
+      "description": "Personal ElevenLabs voice IDs",
+      "patterns": [
+        "ZT9u07TYPVl83ejeLakq"
+      ],
+      "exceptions": [
+        "identity.md",
+        "settings.json",
+        "agents/*.md",
+        "VOICE.md"
+      ]
+    },
+    "locations": {
+      "description": "Personal location data",
+      "patterns": [
+        "Kyiv, Ukraine",
+        "Eastern European Time"
+      ],
+      "exceptions": [
+        "identity.md",
+        "settings.json",
+        ".env.example"
+      ]
+    },
+    "organization_data": {
+      "description": "Personal organization and role information",
+      "patterns": [
+        "K Health",
+        "Senior Full Stack Engineer & Technical Architect"
+      ],
+      "exceptions": [
+        "identity.md",
+        "settings.json",
+        ".env.example"
+      ]
+    },
+    "branding": {
+      "description": "Personal branding that should use PAI instead",
+      "patterns": [
+        "Walle \\(Personal AI Infrastructure\\)",
+        "Walle's AI",
+        "kai agent"
+      ],
+      "exceptions": [
+        "identity.md",
+        "CHANGELOG.md",
+        "MIGRATION.md"
+      ]
+    }
+  },
+  "validation_rules": {
+    "core_files_must_be_generic": {
+      "description": "Core skill files must not contain personal branding",
+      "files": [
+        ".claude/skills/CORE/SKILL.md",
+        ".claude/skills/CORE/CONSTITUTION.md"
+      ],
+      "must_not_contain": [
+        "Walle's",
+        "Ruslan Kurchenko",
+        "Ruslan's",
+        "kai agent"
+      ],
+      "must_contain": [
+        "PAI",
+        "{{AGENT_NAME}}",
+        "{{USER_NAME}}"
+      ]
+    },
+    "agent_files_must_be_generic": {
+      "description": "Agent definition files must use PAI references",
+      "files": [
+        ".claude/agents/*.md"
+      ],
+      "must_not_contain": [
+        "Walle's Digital Assistant system"
+      ],
+      "must_contain": [
+        "PAI"
+      ]
+    },
+    "identity_file_must_use_templates": {
+      "description": "Identity file must use template variables",
+      "files": [
+        ".claude/skills/CORE/identity.md"
+      ],
+      "must_contain": [
+        "{{USER_NAME}}",
+        "{{AGENT_NAME}}",
+        "{{USER_EMAIL}}",
+        "{{USER_LOCATION}}",
+        "{{VOICE_ID}}"
+      ]
+    },
+    "hooks_must_support_templates": {
+      "description": "Context loading hooks must support template substitution",
+      "files": [
+        ".claude/hooks/load-core-context.ts"
+      ],
+      "must_contain": [
+        "PAI_USER_NAME",
+        "PAI_AGENT_NAME",
+        "replace(/\\{\\{USER_NAME\\}\\}/g"
+      ]
+    }
+  },
+  "usage": {
+    "pre_commit": "Run validation before git commit to prevent personal data leaks",
+    "ci_cd": "Integrate into CI/CD pipeline for pull request validation",
+    "manual": "Use with grep or custom validation scripts"
+  },
+  "notes": [
+    "This file defines patterns to detect personal data in commits",
+    "Core files (SKILL.md, CONSTITUTION.md, agents/*.md) should be generic",
+    "Personal data belongs ONLY in: identity.md (as templates), settings.json, .env",
+    "Use this file to create pre-commit hooks or validation scripts",
+    "Update patterns as new personal data types are identified"
+  ]
+}

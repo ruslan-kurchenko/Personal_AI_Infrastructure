@@ -2,7 +2,7 @@
 /**
  * PAI Protected Files Validator
  *
- * Ensures PAI-specific files haven't been overwritten with Kai content.
+ * Validates files against .pai-protected.json patterns to prevent personal data leaks.
  * Run before committing changes to PAI repository.
  *
  * Usage:
@@ -14,16 +14,27 @@ import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { execSync } from 'child_process';
 
+interface ProtectionPattern {
+  description: string;
+  patterns: string[];
+  exceptions?: string[];
+}
+
+interface ValidationRule {
+  description: string;
+  files: string[];
+  must_not_contain?: string[];
+  must_contain?: string[];
+}
+
 interface ProtectedManifest {
   version: string;
-  protected: {
-    [category: string]: {
-      description: string;
-      files?: string[];
-      patterns?: string[];
-      exception_files?: string[];
-      validation?: string;
-    };
+  description?: string;
+  patterns?: {
+    [category: string]: ProtectionPattern;
+  };
+  validation_rules?: {
+    [ruleName: string]: ValidationRule;
   };
 }
 
@@ -61,13 +72,25 @@ function getStagedFiles(): string[] {
 function getAllProtectedFiles(manifest: ProtectedManifest): string[] {
   const files: string[] = [];
 
-  for (const category of Object.values(manifest.protected)) {
-    if (category.files) {
-      files.push(...category.files);
+  // Get files from validation rules
+  if (manifest.validation_rules) {
+    for (const rule of Object.values(manifest.validation_rules)) {
+      files.push(...rule.files);
     }
   }
 
-  return files;
+  return [...new Set(files)]; // Remove duplicates
+}
+
+function matchesException(filePath: string, exceptions: string[] = []): boolean {
+  return exceptions.some(pattern => {
+    const regexPattern = pattern
+      .replace(/\./g, '\\.')
+      .replace(/\*\*/g, '__DOUBLE_STAR__')
+      .replace(/\*/g, '[^/]*')
+      .replace(/__DOUBLE_STAR__/g, '.*');
+    return new RegExp(regexPattern).test(filePath);
+  });
 }
 
 function checkFileContent(filePath: string, manifest: ProtectedManifest): {
@@ -80,73 +103,77 @@ function checkFileContent(filePath: string, manifest: ProtectedManifest): {
     return { valid: true, violations: [] };
   }
 
-  const content = readFileSync(fullPath, 'utf-8');
-  const violations: string[] = [];
+  try {
+    const content = readFileSync(fullPath, 'utf-8');
+    const violations: string[] = [];
 
-  // Get exception files list (applies to ALL checks, not just patterns)
-  const patternCategory = manifest.protected.protected_patterns;
-  const exceptions = patternCategory?.exception_files || [];
-  const isException = exceptions.includes(filePath);
+    // Check pattern-based validations
+    if (manifest.patterns) {
+      for (const [category, config] of Object.entries(manifest.patterns)) {
+        // Skip if file is in exceptions
+        if (matchesException(filePath, config.exceptions)) {
+          continue;
+        }
 
-  // Check for forbidden patterns (skip if exception)
-  if (patternCategory && patternCategory.patterns && !isException) {
-    for (const pattern of patternCategory.patterns) {
-      const regex = new RegExp(pattern, 'g');
-      const matches = content.match(regex);
+        // Check each pattern
+        for (const pattern of config.patterns) {
+          try {
+            const regex = new RegExp(pattern, 'gi');
+            const matches = content.match(regex);
 
-      if (matches) {
-        violations.push(`Found forbidden pattern: "${pattern}" (${matches.length} occurrence(s))`);
-      }
-    }
-  }
-
-  // Check category-specific validation
-  for (const [categoryName, category] of Object.entries(manifest.protected)) {
-    if (!category.files?.includes(filePath) || !category.validation) {
-      continue;
-    }
-
-    // Core documents must reference PAI
-    if (category.validation.includes('PAI')) {
-      if (!content.includes('PAI') && !content.includes('Personal AI Infrastructure')) {
-        violations.push(`Missing required reference to "PAI" or "Personal AI Infrastructure"`);
-      }
-    }
-
-    // Must not contain private Kai data (skip if exception file)
-    if (category.validation.includes('private Kai data') && !isException) {
-      const privatePatterns = [
-        /\/Users\/daniel\/\.claude\/skills\/personal/,
-        /daemon\.plist/,
-        /Kai \(Personal AI Infrastructure\)/,
-      ];
-
-      for (const pattern of privatePatterns) {
-        if (pattern.test(content)) {
-          violations.push(`Contains private Kai reference: ${pattern.source}`);
+            if (matches) {
+              violations.push(
+                `${category}: Found "${matches[0]}" in non-exception file`
+              );
+            }
+          } catch (error) {
+            // Invalid regex - skip
+          }
         }
       }
     }
 
-    // Must not contain secrets (skip if exception file)
-    if (category.validation.includes('secrets') && !isException) {
-      const secretPatterns = [
-        /ANTHROPIC_API_KEY=sk-/,
-        /ELEVENLABS_API_KEY=(?!your_elevenlabs_api_key_here)/,
-        /PERPLEXITY_API_KEY=(?!your_perplexity_api_key_here)/,
-        /@danielmiessler\.com/,
-        /@unsupervised-learning\.com/,
-      ];
+    // Check validation rules
+    if (manifest.validation_rules) {
+      for (const [ruleName, rule] of Object.entries(manifest.validation_rules)) {
+        // Check if this rule applies to this file
+        const fileMatches = rule.files.some(pattern =>
+          matchesException(filePath, [pattern])
+        );
 
-      for (const pattern of secretPatterns) {
-        if (pattern.test(content)) {
-          violations.push(`Contains secret or personal email: ${pattern.source}`);
+        if (!fileMatches) {
+          continue;
+        }
+
+        // Check must_contain requirements
+        if (rule.must_contain) {
+          for (const required of rule.must_contain) {
+            if (!content.includes(required)) {
+              violations.push(
+                `${ruleName}: Missing required "${required}"`
+              );
+            }
+          }
+        }
+
+        // Check must_not_contain requirements
+        if (rule.must_not_contain) {
+          for (const forbidden of rule.must_not_contain) {
+            if (content.includes(forbidden)) {
+              violations.push(
+                `${ruleName}: Found forbidden "${forbidden}"`
+              );
+            }
+          }
         }
       }
     }
-  }
 
-  return { valid: violations.length === 0, violations };
+    return { valid: violations.length === 0, violations };
+  } catch (error) {
+    // Binary file or read error - skip
+    return { valid: true, violations: [] };
+  }
 }
 
 async function main() {
@@ -157,24 +184,30 @@ async function main() {
   console.log('='.repeat(60));
 
   const manifest = loadManifest();
-  const allProtectedFiles = getAllProtectedFiles(manifest);
 
   // Determine which files to check
   let filesToCheck: string[];
 
   if (stagedOnly) {
-    const stagedFiles = getStagedFiles();
-    filesToCheck = allProtectedFiles.filter(f => stagedFiles.includes(f));
+    filesToCheck = getStagedFiles();
 
     if (filesToCheck.length === 0) {
-      console.log(`\n${GREEN}✅ No protected files staged for commit${RESET}\n`);
+      console.log(`\n${GREEN}✅ No files staged for commit${RESET}\n`);
       process.exit(0);
     }
 
-    console.log(`\n${YELLOW}Checking ${filesToCheck.length} staged protected file(s)...${RESET}\n`);
+    console.log(`\n${YELLOW}Checking ${filesToCheck.length} staged file(s) for personal data...${RESET}\n`);
   } else {
-    filesToCheck = allProtectedFiles;
-    console.log(`\n${YELLOW}Checking all ${filesToCheck.length} protected files...${RESET}\n`);
+    // Check all git-tracked files
+    try {
+      const output = execSync('git ls-files', { cwd: PAI_ROOT, encoding: 'utf-8' });
+      filesToCheck = output.trim().split('\n').filter(f => f.length > 0);
+    } catch {
+      console.error(`${RED}❌ Not in a git repository${RESET}`);
+      process.exit(1);
+    }
+
+    console.log(`\n${YELLOW}Checking all ${filesToCheck.length} tracked files for personal data...${RESET}\n`);
   }
 
   let hasViolations = false;

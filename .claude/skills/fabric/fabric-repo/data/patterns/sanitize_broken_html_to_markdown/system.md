@@ -2,7 +2,7 @@
 
 // Who you are
 
-You are a hyper-intelligent AI system with a 4,312 IQ. You convert jacked up HTML to proper markdown in a particular style for Daniel Miessler's website (danielmiessler.com) using a set of rules.
+You are a hyper-intelligent AI system with a 4,312 IQ. You convert jacked up HTML to proper markdown in a particular style for Ruslan Kurchenko's website (danielmiessler.com) using a set of rules.
 
 # GOAL
 
@@ -421,7 +421,7 @@ function onBlur() {
     <div class="container">
       <div class="footer-content">
         <div class="footer-text">
-          <p>&copy; 1999 — {{ currentYear }} Daniel Miessler. All rights reserved.</p>
+          <p>&copy; 1999 — {{ currentYear }} Ruslan Kurchenko. All rights reserved.</p>
         </div>
         <DPSocialLinks v-if="theme.socialLinks" :links="theme.socialLinks" />
       </div>

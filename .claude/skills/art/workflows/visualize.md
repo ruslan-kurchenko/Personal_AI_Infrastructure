@@ -245,7 +245,7 @@ Establish information priority:
 Apply 3-tier system across all elements:
 - **Tier 1 (Advocate Block):** Main title, section headers
 - **Tier 2 (Concourse Sans):** Data labels, chart axes, element labels
-- **Tier 3 (Advocate Condensed Italic):** Annotations, insights, Daniel's voice
+- **Tier 3 (Advocate Condensed Italic):** Annotations, insights, {{USER_NAME}}'s voice
 
 #### D. Color Strategy
 Maintain UL aesthetic while supporting information hierarchy:
@@ -338,7 +338,7 @@ TIER 2 - ELEMENT LABELS (Concourse Sans):
 
 TIER 3 - ANNOTATIONS (Advocate Condensed Italic):
 - [List all annotations and insights]
-- Font: Advocate condensed italic (Daniel's voice)
+- Font: Advocate condensed italic ({{USER_NAME}}'s voice)
 - Size: Small (60% of Tier 2)
 - Color: Purple #4A148C (insights) or Teal #00796B (technical notes)
 - Positions: [Near relevant elements]
@@ -392,7 +392,7 @@ VALIDATION CHECKPOINTS:
 - Are data elements accurate and precise?
 - Do editorial elements enhance (not distract from) information?
 
-Sign "Kai" small in bottom right corner in charcoal (#2D2D2D).
+Sign "{{AGENT_NAME}}" small in bottom right corner in charcoal (#2D2D2D).
 ```
 
 ---

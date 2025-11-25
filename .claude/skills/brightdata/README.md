@@ -135,7 +135,7 @@ The progressive escalation strategy minimizes costs:
 ```
 You: "Scrape https://example.com"
 
-Kai: Successfully retrieved content using Tier 1 (WebFetch)
+Walle: Successfully retrieved content using Tier 1 (WebFetch)
      [Content in markdown...]
 ```
 
@@ -143,7 +143,7 @@ Kai: Successfully retrieved content using Tier 1 (WebFetch)
 ```
 You: "Get content from https://spa-site.com"
 
-Kai: Tier 1 failed (empty content)
+Walle: Tier 1 failed (empty content)
      Tier 2 failed (JavaScript required)
      Successfully retrieved content using Tier 3 (Browser Automation)
      [Content in markdown...]
@@ -153,7 +153,7 @@ Kai: Tier 1 failed (empty content)
 ```
 You: "Scrape https://protected-site.com"
 
-Kai: Tier 1 failed (blocked)
+Walle: Tier 1 failed (blocked)
      Tier 2 failed (bot detection)
      Tier 3 failed (CAPTCHA)
      Successfully retrieved content using Tier 4 (Bright Data)
@@ -194,4 +194,4 @@ Questions or improvements?
 
 ---
 
-**AIL Tier Level 5** (Highest AI Involvement) - Daniel's idea completely implemented by Kai.
+**AIL Tier Level 5** (Highest AI Involvement) - Ruslan's idea completely implemented by Walle.

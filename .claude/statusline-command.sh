@@ -4,7 +4,8 @@
 input=$(cat)
 
 # Get Digital Assistant configuration from environment
-DA_NAME="${DA:-Assistant}"  # Assistant name
+# Priority: PAI_AGENT_NAME (new standard) > DA (legacy) > "Assistant" (default)
+DA_NAME="${PAI_AGENT_NAME:-${DA:-Assistant}}"  # Assistant name
 DA_COLOR="${DA_COLOR:-purple}"  # Color for the assistant name
 
 # Extract data from JSON input

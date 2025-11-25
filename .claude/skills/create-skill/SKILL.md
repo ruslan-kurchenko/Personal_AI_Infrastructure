@@ -1,6 +1,6 @@
 ---
 name: create-skill
-description: Guide for creating new skills in Kai's personal AI infrastructure. Use when user wants to create, update, or structure a new skill that extends capabilities with specialized knowledge, workflows, or tool integrations. Follows both Anthropic skill standards and PAI-specific patterns.
+description: Guide for creating new skills in Walle's personal AI infrastructure. Use when user wants to create, update, or structure a new skill that extends capabilities with specialized knowledge, workflows, or tool integrations. Follows both Anthropic skill standards and PAI-specific patterns.
 ---
 
 # Create Skill - Skill Creation Framework
@@ -11,7 +11,7 @@ description: Guide for creating new skills in Kai's personal AI infrastructure. 
 - "Add a skill for Z"
 - "Update/improve existing skill"
 - "Structure a skill properly"
-- User wants to extend Kai's capabilities
+- User wants to extend Walle's capabilities
 
 ## Core Skill Creation Workflow
 
@@ -134,4 +134,4 @@ For templates: `ls ${PAI_DIR}/skills/create-skill/templates/`
 4. **Context inheritance**: Skills inherit global context automatically
 5. **No duplication**: Reference global context, don't duplicate it
 6. **Self-contained**: Skill should work independently
-7. **Discoverable**: Description enables Kai to match user intent
+7. **Discoverable**: Description enables Walle to match user intent

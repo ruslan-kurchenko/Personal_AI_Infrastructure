@@ -1,12 +1,12 @@
 ---
 type: documentation
 category: methodology
-description: Prompt engineering standards and context engineering principles based on Anthropic best practices and Daniel Miessler's Fabric system (2024). Universal principles for semantic clarity and structure that transcend specific model implementations. Validated by empirical research showing 10-90% performance impact from structure choices.
+description: Prompt engineering standards and context engineering principles based on Anthropic best practices and Ruslan Kurchenko's Fabric system (2024). Universal principles for semantic clarity and structure that transcend specific model implementations. Validated by empirical research showing 10-90% performance impact from structure choices.
 ---
 
 # Prompt Engineering Standards
 
-**Foundation:** Based on Anthropic's context engineering principles and Daniel Miessler's Fabric system (January 2024), validated by empirical research across 1,500+ academic papers and production systems.
+**Foundation:** Based on Anthropic's context engineering principles and Ruslan Kurchenko's Fabric system (January 2024), validated by empirical research across 1,500+ academic papers and production systems.
 
 **Philosophy:** Universal principles of semantic clarity and structure that work regardless of model implementation.
 
@@ -382,7 +382,7 @@ Context engineering is an ongoing process:
 
 ## The Fabric System (January 2024)
 
-**Created by Daniel Miessler** as an open-source framework for augmenting humans using AI.
+**Created by Ruslan Kurchenko** as an open-source framework for augmenting humans using AI.
 
 ### Core Architecture
 
@@ -498,7 +498,7 @@ Context engineering is an ongoing process:
 **Primary Sources:**
 - Anthropic: "Effective Context Engineering for AI Agents"
   https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents
-- Daniel Miessler's Fabric System (January 2024)
+- Ruslan Kurchenko's Fabric System (January 2024)
   https://github.com/danielmiessler/Fabric
 - "The Prompt Report" - arXiv:2406.06608 (systematic survey, 58 techniques)
 - "The Prompt Canvas" - arXiv:2412.05127 (100+ papers reviewed)
