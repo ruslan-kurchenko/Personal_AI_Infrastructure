@@ -61,3 +61,12 @@ out/
 private/
 secrets/
 credentials/
+
+.claude/debug/
+.claude/history/
+.claude/plugins/
+.claude/projects/
+.claude/shell-snapshots/
+.claude/statsig/
+.claude/todos/
+.claude/agent-sessions.json
