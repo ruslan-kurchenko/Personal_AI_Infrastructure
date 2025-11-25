@@ -72,3 +72,4 @@ credentials/
 .claude/agent-sessions.json
 .claude/file-history/
 .claude/history.jsonl
+.claude/plans/
