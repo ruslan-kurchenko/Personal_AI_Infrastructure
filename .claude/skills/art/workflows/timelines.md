@@ -68,7 +68,7 @@ White #FFFFFF or Light Cream #F5E6D3
 
 **Identify what you're showing:**
 
-1. **What's evolving?** (e.g., AI development, security paradigms, Ruslan's thinking)
+1. **What's evolving?** (e.g., AI development, security paradigms, {{USER_NAME}}'s thinking)
 2. **Time span?** (e.g., 1990-2025, past 5 years, projected future)
 3. **Key milestones?** (List 4-8 major points - too many becomes cluttered)
 4. **What's the narrative arc?** (e.g., collapse → crisis → renewal, winter → spring → summer)
@@ -229,7 +229,7 @@ CRITICAL REQUIREMENTS:
 - Maintains editorial illustration aesthetic
 - Easy to scan and follow progression
 
-Sign "Walle" small in bottom right corner in charcoal (#2D2D2D).
+Sign "{{AGENT_NAME}}" small in bottom right corner in charcoal (#2D2D2D).
 ```
 
 ---
@@ -307,7 +307,7 @@ open /path/to/timeline.png
 - **Color:** Purple on "Deep Learning Breakthrough" (2012)
 - **Orientation:** Horizontal 16:9
 
-### Example 2: "Ruslan's Security Thinking Evolution"
+### Example 2: "{{USER_NAME}}'s Security Thinking Evolution"
 - **Timeline:** 2000 → Present
 - **Milestones:** Each era with metaphor (fortress → ecosystem → adaptive)
 - **Color:** Purple on paradigm shifts

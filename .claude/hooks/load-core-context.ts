@@ -30,6 +30,19 @@
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';
 import { PAI_DIR, SKILLS_DIR } from './lib/pai-paths';
+import {
+  USER_NAME,
+  AGENT_NAME,
+  USER_EMAIL,
+  USER_LOCATION_CITY,
+  USER_LOCATION_COUNTRY,
+  USER_TIMEZONE,
+  USER_ROLE,
+  USER_ORGANIZATION,
+  VOICE_ID,
+  getUserLocation,
+  validateCoreIdentity
+} from './lib/pai-identity';
 
 async function main() {
   try {
@@ -43,6 +56,9 @@ async function main() {
       console.error('🤖 Subagent session - skipping CORE context loading');
       process.exit(0);
     }
+
+    // Validate core identity configuration (warns if using defaults)
+    validateCoreIdentity();
 
     // Get CORE skill paths using PAI paths library
     const coreSkillPath = join(SKILLS_DIR, 'CORE/SKILL.md');
@@ -66,6 +82,28 @@ async function main() {
     if (existsSync(identityPath)) {
       identityContent = readFileSync(identityPath, 'utf-8');
       console.error(`✅ Read ${identityContent.length} characters from identity.md`);
+
+      // Perform template substitution on identity content
+      const originalTemplateCount = (identityContent.match(/\{\{/g) || []).length;
+      identityContent = identityContent
+        // Core identity
+        .replace(/\{\{USER_NAME\}\}/g, USER_NAME)
+        .replace(/\{\{AGENT_NAME\}\}/g, AGENT_NAME)
+
+        // Optional identity fields (may be empty strings)
+        .replace(/\{\{USER_EMAIL\}\}/g, USER_EMAIL)
+        .replace(/\{\{USER_LOCATION_CITY\}\}/g, USER_LOCATION_CITY)
+        .replace(/\{\{USER_LOCATION_COUNTRY\}\}/g, USER_LOCATION_COUNTRY)
+        .replace(/\{\{USER_LOCATION\}\}/g, getUserLocation())
+        .replace(/\{\{USER_TIMEZONE\}\}/g, USER_TIMEZONE)
+        .replace(/\{\{USER_ROLE\}\}/g, USER_ROLE)
+        .replace(/\{\{USER_ORGANIZATION\}\}/g, USER_ORGANIZATION)
+
+        // Voice configuration
+        .replace(/\{\{VOICE_ID\}\}/g, VOICE_ID);
+
+      const remainingTemplates = (identityContent.match(/\{\{/g) || []).length;
+      console.error(`✅ Substituted ${originalTemplateCount} template variables (${remainingTemplates} remaining)`);
     } else {
       console.error(`ℹ️  identity.md not found - skipping personal identity context`);
     }

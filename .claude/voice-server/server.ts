@@ -29,8 +29,15 @@ if (!ELEVENLABS_API_KEY) {
   console.error('Add: ELEVENLABS_API_KEY=your_key_here');
 }
 
-// Default voice ID (Kai's voice)
-const DEFAULT_VOICE_ID = process.env.ELEVENLABS_VOICE_ID || "s3TPKV1kjDlVtZbl4Ksh";
+// Default voice ID - Priority: PAI_VOICE_ID (new) > ELEVENLABS_VOICE_ID (legacy) > hardcoded default
+const DEFAULT_VOICE_ID = process.env.PAI_VOICE_ID ||
+                         process.env.ELEVENLABS_VOICE_ID ||
+                         "s3TPKV1kjDlVtZbl4Ksh";
+
+// Default agent name - Priority: PAI_AGENT_NAME (new) > DA (legacy) > "PAI Assistant" (default)
+const DEFAULT_AGENT_NAME = process.env.PAI_AGENT_NAME ||
+                           process.env.DA ||
+                           "PAI Assistant";
 
 // Sanitize input for shell commands
 function sanitizeForShell(input: string): string {
@@ -241,7 +248,7 @@ const server = serve({
     if (url.pathname === "/notify" && req.method === "POST") {
       try {
         const data = await req.json();
-        const title = data.title || "PAI Notification";
+        const title = data.title || DEFAULT_AGENT_NAME;
         const message = data.message || "Task completed";
         const voiceEnabled = data.voice_enabled !== false;
         const voiceId = data.voice_id || data.voice_name || null; // Support both voice_id and voice_name
@@ -276,7 +283,7 @@ const server = serve({
     if (url.pathname === "/pai" && req.method === "POST") {
       try {
         const data = await req.json();
-        const title = data.title || "PAI Assistant";
+        const title = data.title || DEFAULT_AGENT_NAME;
         const message = data.message || "Task completed";
 
         console.log(`🤖 PAI notification: "${title}" - "${message}"`);

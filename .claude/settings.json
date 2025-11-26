@@ -2,9 +2,17 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "env": {
     "DA": "PAI",
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000"
+    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
+    "PAI_USER_NAME": "Ruslan Kurchenko",
+    "PAI_AGENT_NAME": "Walle",
+    "PAI_USER_EMAIL": "ruslan.kurchenko@email.com",
+    "PAI_USER_LOCATION_CITY": "Kyiv",
+    "PAI_USER_LOCATION_COUNTRY": "Ukraine",
+    "PAI_USER_TIMEZONE": "Eastern European Time (EET/EEST)",
+    "PAI_USER_ROLE": "Senior Full Stack Engineer & Technical Architect",
+    "PAI_USER_ORGANIZATION": "K Health",
+    "PAI_VOICE_ID": "ZT9u07TYPVl83ejeLakq"
   },
-  "_comment_PAI_DIR": "PAI_DIR is not needed - hooks default to ~/.claude automatically. Only set PAI_DIR if you need a custom location (use absolute path like /Users/yourname/.claude)",
   "permissions": {
     "allow": [
       "Bash",
@@ -59,6 +67,7 @@
       "Bash(> /dev/sda)"
     ]
   },
+  "model": "sonnet[1m]",
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [],
   "hooks": {
@@ -185,6 +194,7 @@
   "enabledPlugins": {
     "browser-automation@browser-tools": true
   },
-  "alwaysThinkingEnabled": true,
+  "alwaysThinkingEnabled": false,
+  "_comment_PAI_DIR": "PAI_DIR is not needed - hooks default to ~/.claude automatically. Only set PAI_DIR if you need a custom location (use absolute path like /Users/yourname/.claude)",
   "max_tokens": 4096
 }

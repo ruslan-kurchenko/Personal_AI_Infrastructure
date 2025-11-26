@@ -358,26 +358,44 @@ fi
 print_info "Detected shell: $SHELL_NAME"
 print_info "Configuration file: $SHELL_CONFIG"
 
-# Check if PAI environment variables are already configured
-if grep -q "PAI_DIR" "$SHELL_CONFIG" 2>/dev/null; then
-    print_info "PAI environment variables already exist in $SHELL_CONFIG"
+# Check if PAI environment variables are already configured (idempotent check)
+if grep -q "export PAI_AGENT_NAME=" "$SHELL_CONFIG" 2>/dev/null; then
+    # Extract current values to show user
+    current_pai_agent=$(grep "export PAI_AGENT_NAME=" "$SHELL_CONFIG" 2>/dev/null | cut -d'"' -f2)
+    current_pai_dir=$(grep "export PAI_DIR=" "$SHELL_CONFIG" 2>/dev/null | cut -d'"' -f2)
 
-    if ask_yes_no "Update them?"; then
-        # Remove old PAI configuration
+    print_success "PAI already configured in $SHELL_CONFIG:"
+    echo "  Agent: ${current_pai_agent:-Not set}"
+    echo "  Directory: ${current_pai_dir:-Not set}"
+    echo ""
+
+    if ask_yes_no "Keep existing configuration?" "y"; then
+        SHOULD_ADD_CONFIG=false
+        # Re-export for this session
+        AI_NAME="$current_pai_agent"
+        export PAI_AGENT_NAME="$AI_NAME"
+    else
+        # Backup before modifying
+        cp "$SHELL_CONFIG" "$SHELL_CONFIG.pai-backup-$(date +%Y%m%d-%H%M%S)"
+        print_info "Backup created: $SHELL_CONFIG.pai-backup-*"
+
+        # Remove old PAI configuration block
         sed -i.bak '/# ========== PAI Configuration ==========/,/# =========================================/d' "$SHELL_CONFIG"
         SHOULD_ADD_CONFIG=true
-    else
-        SHOULD_ADD_CONFIG=false
     fi
 else
+    # Not configured yet - safe to add
     SHOULD_ADD_CONFIG=true
 fi
 
 if [ "$SHOULD_ADD_CONFIG" = true ]; then
     print_step "Adding PAI environment variables to $SHELL_CONFIG..."
 
+    # Ask for user's name (NEW - for PAI_USER_NAME)
+    USER_NAME=$(ask_input "What is your full name?" "User")
+
     # Ask for AI assistant name
-    AI_NAME=$(ask_input "What would you like to call your AI assistant?" "Kai")
+    AI_NAME=$(ask_input "What would you like to call your AI assistant?" "Assistant")
 
     # Ask for color
     echo ""
@@ -412,8 +430,9 @@ export PAI_DIR="$PAI_DIR"
 # Your home directory
 export PAI_HOME="\$HOME"
 
-# Your AI assistant's name
-export DA="$AI_NAME"
+# Your AI assistant's name (PAI_AGENT_NAME is primary, DA is legacy)
+export PAI_AGENT_NAME="$AI_NAME"
+export DA="$AI_NAME"  # Backward compatibility
 
 # Display color
 export DA_COLOR="$AI_COLOR"
@@ -430,6 +449,109 @@ fi
 # Source the configuration for this session
 export PAI_DIR="$PAI_DIR"
 export PAI_HOME="$HOME"
+export PAI_AGENT_NAME="$AI_NAME"
+
+# ============================================
+# Step 5B: Configure Personal Identity
+# ============================================
+
+print_header "Step 5B: Personalizing PAI"
+
+echo "PAI uses template substitution to personalize your experience."
+echo "Your identity will be configured in settings.json"
+echo ""
+
+# Prompt for optional fields
+echo "Let's configure your personal information (press Enter to skip optional fields):"
+echo ""
+
+USER_EMAIL=$(ask_input "Your email address (optional)" "")
+USER_CITY=$(ask_input "Your city (optional)" "")
+USER_COUNTRY=$(ask_input "Your country (optional)" "")
+USER_TIMEZONE=$(ask_input "Your timezone (optional)" "")
+USER_ROLE=$(ask_input "Your job title (optional)" "")
+USER_ORG=$(ask_input "Your organization (optional)" "")
+VOICE_ID=$(ask_input "Your ElevenLabs voice ID (optional)" "")
+
+# Create or update settings.json
+SETTINGS_FILE="$PAI_DIR/.claude/settings.json"
+
+if [ -f "$SETTINGS_FILE" ]; then
+    print_info "Updating existing settings.json with your identity..."
+
+    # Use jq to update env block (requires jq)
+    if command_exists jq; then
+        # Backup settings.json first
+        cp "$SETTINGS_FILE" "$SETTINGS_FILE.backup-$(date +%Y%m%d-%H%M%S)"
+
+        # Build env vars JSON - only add non-empty values
+        jq_filter='.env.PAI_USER_NAME = $user | .env.PAI_AGENT_NAME = $agent'
+
+        if [ -n "$USER_EMAIL" ]; then
+            jq_filter="$jq_filter | .env.PAI_USER_EMAIL = \$email"
+        fi
+        if [ -n "$USER_CITY" ]; then
+            jq_filter="$jq_filter | .env.PAI_USER_LOCATION_CITY = \$city"
+        fi
+        if [ -n "$USER_COUNTRY" ]; then
+            jq_filter="$jq_filter | .env.PAI_USER_LOCATION_COUNTRY = \$country"
+        fi
+        if [ -n "$USER_TIMEZONE" ]; then
+            jq_filter="$jq_filter | .env.PAI_USER_TIMEZONE = \$tz"
+        fi
+        if [ -n "$USER_ROLE" ]; then
+            jq_filter="$jq_filter | .env.PAI_USER_ROLE = \$role"
+        fi
+        if [ -n "$USER_ORG" ]; then
+            jq_filter="$jq_filter | .env.PAI_USER_ORGANIZATION = \$org"
+        fi
+        if [ -n "$VOICE_ID" ]; then
+            jq_filter="$jq_filter | .env.PAI_VOICE_ID = \$voice"
+        fi
+
+        # Apply updates
+        jq --arg user "$USER_NAME" \
+           --arg agent "$AI_NAME" \
+           --arg email "$USER_EMAIL" \
+           --arg city "$USER_CITY" \
+           --arg country "$USER_COUNTRY" \
+           --arg tz "$USER_TIMEZONE" \
+           --arg role "$USER_ROLE" \
+           --arg org "$USER_ORG" \
+           --arg voice "$VOICE_ID" \
+           "$jq_filter" \
+           "$SETTINGS_FILE" > "$SETTINGS_FILE.tmp"
+
+        # Validate JSON
+        if jq empty "$SETTINGS_FILE.tmp" 2>/dev/null; then
+            mv "$SETTINGS_FILE.tmp" "$SETTINGS_FILE"
+            print_success "settings.json updated with your identity"
+        else
+            print_error "Generated invalid JSON - keeping original"
+            rm "$SETTINGS_FILE.tmp"
+        fi
+    else
+        print_warning "jq not found - you'll need to manually edit settings.json"
+        print_info "Add these to the env block in $SETTINGS_FILE:"
+        echo "  \"PAI_USER_NAME\": \"$USER_NAME\","
+        echo "  \"PAI_AGENT_NAME\": \"$AI_NAME\""
+        if [ -n "$USER_EMAIL" ]; then echo "  \"PAI_USER_EMAIL\": \"$USER_EMAIL\","; fi
+    fi
+else
+    print_warning "settings.json not found at $SETTINGS_FILE"
+    print_info "It will be created when you start Claude Code"
+fi
+
+print_success "Personal identity configured!"
+echo ""
+echo "Your configuration:"
+echo "  Name: $USER_NAME"
+echo "  Assistant: $AI_NAME"
+if [ -n "$USER_EMAIL" ]; then echo "  Email: $USER_EMAIL"; fi
+if [ -n "$USER_CITY" ] && [ -n "$USER_COUNTRY" ]; then echo "  Location: $USER_CITY, $USER_COUNTRY"; fi
+if [ -n "$USER_ROLE" ]; then echo "  Role: $USER_ROLE"; fi
+if [ -n "$USER_ORG" ]; then echo "  Organization: $USER_ORG"; fi
+echo ""
 
 # ============================================
 # Step 6: Create .env File
@@ -643,6 +765,44 @@ else
     print_info "Claude Code settings not configured"
 fi
 
+# Test 7: Template substitution configuration
+print_step "Checking template substitution setup..."
+
+if [ -f "$PAI_DIR/.claude/settings.json" ]; then
+    if command_exists jq; then
+        if jq -e '.env.PAI_USER_NAME' "$PAI_DIR/.claude/settings.json" >/dev/null 2>&1; then
+            user_name=$(jq -r '.env.PAI_USER_NAME // "NOT_SET"' "$PAI_DIR/.claude/settings.json")
+            agent_name=$(jq -r '.env.PAI_AGENT_NAME // "NOT_SET"' "$PAI_DIR/.claude/settings.json")
+
+            if [ "$user_name" != "NOT_SET" ] && [ "$user_name" != "User" ]; then
+                print_success "Personal identity configured: $user_name"
+            else
+                print_warning "PAI_USER_NAME not configured - will use generic 'User'"
+            fi
+
+            if [ "$agent_name" != "NOT_SET" ] && [ "$agent_name" != "Assistant" ]; then
+                print_success "Assistant identity configured: $agent_name"
+            else
+                print_warning "PAI_AGENT_NAME not configured - will use generic 'Assistant'"
+            fi
+        else
+            print_warning "PAI identity not configured in settings.json"
+            print_info "You can configure it later - see .claude/docs/FORKING_PAI.md"
+        fi
+
+        # Validate JSON structure
+        if jq empty "$PAI_DIR/.claude/settings.json" 2>/dev/null; then
+            print_success "settings.json is valid JSON"
+        else
+            print_error "settings.json has invalid JSON syntax!"
+        fi
+    else
+        print_warning "jq not installed - can't validate settings.json"
+    fi
+else
+    print_warning "settings.json not found"
+fi
+
 # ============================================
 # Final Success Message
 # ============================================
@@ -676,15 +836,25 @@ print_header "Next Steps"
 
 echo "1. ${CYAN}Restart your terminal${NC} (or run: source $SHELL_CONFIG)"
 echo ""
-echo "2. ${CYAN}Open Claude Code${NC} and try these commands:"
-echo "   • 'Hey, tell me about yourself'"
-echo "   • 'Research the latest AI developments'"
-echo "   • 'What skills do you have?'"
+echo "2. ${CYAN}Start Claude Code${NC} and verify your identity loaded:"
+if [ -n "$USER_NAME" ]; then
+    echo "   • Your session should show: $USER_NAME"
+    echo "   • Your assistant should be called: $AI_NAME"
+else
+    echo "   • Check session start for your configured identity"
+fi
+echo "   • If you see 'User' or 'Assistant', check settings.json"
 echo ""
-echo "3. ${CYAN}Customize PAI for you:${NC}"
-echo "   • Edit: $PAI_DIR/skills/PAI/SKILL.md"
-echo "   • Add API keys: $PAI_DIR/.env"
-echo "   • Read the docs: $PAI_DIR/documentation/how-to-start.md"
+echo "3. ${CYAN}Understand the template system:${NC}"
+echo "   • identity.md contains {{VARIABLES}} templates"
+echo "   • settings.json env block provides your values"
+echo "   • Templates are substituted at session start"
+echo "   • Read: $PAI_DIR/.claude/docs/FORKING_PAI.md"
+echo ""
+echo "4. ${CYAN}Customize PAI further:${NC}"
+echo "   • Add API keys: $PAI_DIR/.claude/.env"
+echo "   • Create custom skills: $PAI_DIR/.claude/skills/your-skill/"
+echo "   • Add context hooks: See $PAI_DIR/.claude/docs/EXTENSION_PATTERN.md"
 echo ""
 
 print_header "Quick Reference"

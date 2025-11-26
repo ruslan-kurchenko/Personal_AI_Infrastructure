@@ -270,7 +270,7 @@ CRITICAL REQUIREMENTS:
 - Maintains UL aesthetic (black linework, flat color, imperfect)
 - Smart insight or humor (sophisticated, not silly)
 
-Sign "Walle" small in bottom right corner of final panel in charcoal (#2D2D2D).
+Sign "{{AGENT_NAME}}" small in bottom right corner of final panel in charcoal (#2D2D2D).
 ```
 
 ---

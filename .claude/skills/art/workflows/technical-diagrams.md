@@ -84,7 +84,7 @@ Technical diagrams explain systems, architectures, processes, and flows. Unlike 
 ---
 
 ### **TIER 3: ANNOTATIONS & INSIGHTS (Advocate Condensed Italic)**
-**Function:** WHY — Commentary, insights, Ruslan's voice
+**Function:** WHY — Commentary, insights, {{USER_NAME}}'s voice
 
 - **Font:** Advocate style but condensed/narrower AND italicized
 - **Size:** Smaller - 60-70% of Tier 2 size
@@ -95,7 +95,7 @@ Technical diagrams explain systems, architectures, processes, and flows. Unlike 
 
 **Visual characteristics:**
 - Italicized hand-lettered style
-- Feels like Ruslan's handwritten notes on the diagram
+- Feels like {{USER_NAME}}'s handwritten notes on the diagram
 - Adds personality and insight beyond structure
 - Strategic placement near relevant components
 
@@ -122,7 +122,7 @@ Technical diagrams explain systems, architectures, processes, and flows. Unlike 
 │   │   Database   │                            │  ← TIER 2: Component label
 │   └──────────────┘                            │
 │                                                 │
-│                    "Walle" signature              │
+│                    "{{AGENT_NAME}}" signature              │
 └─────────────────────────────────────────────────┘
 ```
 
@@ -135,7 +135,7 @@ Technical diagrams explain systems, architectures, processes, and flows. Unlike 
 | Diagram title | Tier 1 (Advocate Block) | Establishes context immediately |
 | Box/node labels | Tier 2 (Concourse Sans) | Clear functional identification |
 | Connection labels | Tier 2 (Concourse Sans) | What flows between components |
-| Explanatory notes | Tier 3 (Advocate Italic) | Why this matters, Ruslan's insights |
+| Explanatory notes | Tier 3 (Advocate Italic) | Why this matters, {{USER_NAME}}'s insights |
 | Warning callouts | Tier 3 (Advocate Italic + Purple) | "*bottleneck*" or "*security issue*" |
 | Process steps | Tier 2 (Concourse Sans) | "Step 1:", "Step 2:" |
 | Section headers | Tier 1 (Advocate Block, smaller) | "INPUT LAYER", "PROCESSING" |
@@ -153,7 +153,7 @@ Technical diagrams explain systems, architectures, processes, and flows. Unlike 
 - Emphasis: Black #000000 for primary components
 
 **Tier 3 (Annotations):**
-- Default: Purple #4A148C for Ruslan's voice/insights
+- Default: Purple #4A148C for {{USER_NAME}}'s voice/insights
 - Alternative: Teal #00796B for technical annotations
 - Creates visual distinction from structural labels
 
@@ -319,7 +319,7 @@ TIER 3 - ANNOTATIONS & INSIGHTS (Advocate Condensed Italic):
 - "*this is the bottleneck*", "*where scaling breaks*"
 - Font: Advocate style but condensed and italicized
 - Size: 60-70% of Tier 2 (smaller, supportive)
-- Color: Purple #4A148C (Ruslan's voice) or Teal #00796B (technical notes)
+- Color: Purple #4A148C ({{USER_NAME}}'s voice) or Teal #00796B (technical notes)
 - Function: Explains WHY things matter (insights, commentary)
 - Example: "*rate limiting happens here*", "*security vulnerability*"
 
@@ -341,7 +341,7 @@ CRITICAL REQUIREMENTS:
 - Blueprint/engineering notebook aesthetic
 - Strategic color use (not everything colored, mostly black with purple/teal highlights)
 
-[Optional: Add "Walle" signature in bottom right corner in charcoal]
+[Optional: Add "{{AGENT_NAME}}" signature in bottom right corner in charcoal]
 ```
 
 ---

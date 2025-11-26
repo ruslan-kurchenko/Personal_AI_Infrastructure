@@ -220,7 +220,7 @@ CRITICAL REQUIREMENTS:
 - Scannable and reference-friendly layout
 - Strategic color coding for categories
 
-Sign "Walle" small in bottom right corner in charcoal (#2D2D2D).
+Sign "{{AGENT_NAME}}" small in bottom right corner in charcoal (#2D2D2D).
 ```
 
 ---

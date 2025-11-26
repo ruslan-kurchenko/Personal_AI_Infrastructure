@@ -283,7 +283,7 @@ CRITICAL REQUIREMENTS:
 - Navigable and understandable as conceptual geography
 - Editorial illustration aesthetic maintained
 
-Sign "Walle" small in bottom corner in charcoal (#2D2D2D).
+Sign "{{AGENT_NAME}}" small in bottom corner in charcoal (#2D2D2D).
 ```
 
 ---

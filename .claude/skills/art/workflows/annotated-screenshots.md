@@ -8,7 +8,7 @@ Creates **ANNOTATED SCREENSHOTS** — actual UI screenshots or code snippets wit
 
 ## Purpose
 
-Annotated screenshots combine real artifacts (UI, code, data) with hand-drawn editorial commentary. This **hybrid real + illustrated** approach adds Ruslan's voice and insights directly onto actual examples.
+Annotated screenshots combine real artifacts (UI, code, data) with hand-drawn editorial commentary. This **hybrid real + illustrated** approach adds {{USER_NAME}}'s voice and insights directly onto actual examples.
 
 **Use this workflow for:**
 - Product reviews with annotated screenshots
@@ -21,14 +21,14 @@ Annotated screenshots combine real artifacts (UI, code, data) with hand-drawn ed
 
 ## Visual Aesthetic: Real + Hand-Drawn Overlay
 
-**Think:** Screenshot with hand-drawn arrows, circles, and annotations in Ruslan's voice
+**Think:** Screenshot with hand-drawn arrows, circles, and annotations in {{USER_NAME}}'s voice
 
 ### Core Characteristics
 1. **Real foundation** — Actual screenshot or code snippet (not illustrated)
 2. **Hand-drawn overlay** — Arrows, circles, highlights, callouts in editorial style
 3. **Typography mix** — Real UI text + hand-lettered annotations
 4. **Color accents** — Purple/teal for annotations against real screenshot
-5. **Ruslan's voice** — Annotations sound like his commentary
+5. **{{USER_NAME}}'s voice** — Annotations sound like their commentary
 6. **Editorial style** — Maintains UL imperfect, gestural linework for overlays
 7. **Functional clarity** — Annotations enhance understanding, not just decoration
 
@@ -103,7 +103,7 @@ KEY AREAS TO ANNOTATE:
    - Underline or bracket
    - Callout with note
 
-3. **What's Ruslan's commentary?**
+3. **What's {{USER_NAME}}'s commentary?**
    - "*this is the problem*"
    - "*should be here instead*"
    - "*genius design*"
@@ -116,7 +116,7 @@ ANNOTATIONS TO ADD:
 1. [Area/Element]:
    - Type: [Arrow / Circle / Box / Underline]
    - Color: [Purple / Teal / Black]
-   - Text: "[Ruslan's commentary]"
+   - Text: "[{{USER_NAME}}'s commentary]"
    - Position: [Where on screenshot]
 
 2. [Area/Element]:
@@ -167,7 +167,7 @@ TYPOGRAPHY FOR ANNOTATIONS (Advocate Italic):
 - Font: Advocate condensed italic (hand-lettered style)
 - Size: Readable against screenshot
 - Color: Purple #4A148C or Teal #00796B for emphasis
-- Style: Ruslan's voice — casual, direct, insightful
+- Style: {{USER_NAME}}'s voice — casual, direct, insightful
 
 ANNOTATIONS TO ADD:
 [List each annotation, e.g.:]
@@ -209,11 +209,11 @@ CRITICAL REQUIREMENTS:
 - Hand-drawn annotations clearly overlay (not integrated into UI)
 - Annotations enhance understanding, point out insights
 - Variable stroke weight, imperfect human-drawn quality
-- Ruslan's voice in text ("*this*", not formal descriptions)
+- {{USER_NAME}}'s voice in text ("*this*", not formal descriptions)
 - Strategic color (not every annotation needs color)
 - No gradients on annotations
 
-Optional: Sign "Walle" small in bottom corner in charcoal (#2D2D2D).
+Optional: Sign "{{AGENT_NAME}}" small in bottom corner in charcoal (#2D2D2D).
 ```
 
 ### Alternative: Composite Workflow
@@ -271,7 +271,7 @@ open /path/to/annotated.png
 #### Must Have
 - [ ] **Screenshot readable** — Original content clearly visible
 - [ ] **Annotations clear** — Arrows/circles/text obviously hand-drawn overlays
-- [ ] **Ruslan's voice** — Annotations sound like his commentary
+- [ ] **{{USER_NAME}}'s voice** — Annotations sound like their commentary
 - [ ] **Strategic pointing** — Annotations highlight key insights, not random decoration
 - [ ] **Color emphasis** — Purple on critical, teal on helpful
 - [ ] **Hand-drawn quality** — Wobbly arrows, imperfect circles, gestural
@@ -291,7 +291,7 @@ open /path/to/annotated.png
 |---------|-----|
 | Screenshot too dark | Lighten/desaturate screenshot layer, increase annotation contrast |
 | Annotations too polished | Emphasize "hand-drawn wobbly arrows, imperfect circles, gestural sketch" |
-| Voice too formal | Rewrite annotations in Ruslan's casual voice: "*this right here*" |
+| Voice too formal | Rewrite annotations in {{USER_NAME}}'s casual voice: "*this right here*" |
 | Can't tell what's being pointed out | Larger/bolder arrows, clearer pointing direction |
 | Too cluttered | Reduce annotations to 3-5 key insights only |
 | Looks corporate | Reference "editorial annotation style, smart person's markup, hand-drawn notes" |
@@ -345,7 +345,7 @@ open /path/to/annotated.png
 - Black: Structural marks
 
 **Voice:**
-- Casual, direct, Ruslan's commentary
+- Casual, direct, {{USER_NAME}}'s commentary
 - "*this is the issue*" not "Area A shows problem"
 
 ---
