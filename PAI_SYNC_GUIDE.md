@@ -37,6 +37,15 @@ Checks for:
 ### 3. **Pre-Commit Hook** (`.git/hooks/pre-commit`)
 Automatically runs validation before every commit.
 
+### 4. **Template System** (New in v2.0)
+Personal data stored in environment variables, not committed files:
+- ✅ `identity.md` uses `{{VARIABLES}}` (committed as template)
+- ✅ `settings.json` env block contains personal values (YOU customize this)
+- ✅ Core files (SKILL.md, CONSTITUTION.md, agents/*.md) are de-personalized
+- ✅ Template substitution happens at session start via hooks
+
+**When syncing:** Core files are now generic and safe to sync! Personal data lives only in settings.json env vars.
+
 ---
 
 ## 📋 Safe Sync Workflow
@@ -70,11 +79,23 @@ cp ~/.claude/hooks/some-hook.ts ~/Projects/PAI/.claude/hooks/
 ### Step 4: Sanitize Content
 Remove any:
 - API keys (`ANTHROPIC_API_KEY=sk-...`)
-- Personal emails (`daniel@danielmiessler.com`)
-- Private file paths (`/Users/daniel/.claude/skills/personal`)
+- Personal emails (your actual email)
+- Private file paths (`/Users/yourname/.claude/skills/personal`)
 - References to private services
+- Hardcoded personal names (use `{{VARIABLES}}` in templates instead)
 
-Replace with placeholders:
+**For identity data:** Use template variables:
+```markdown
+# Before (hardcoded)
+- User: Ruslan Kurchenko
+- Email: ruslan@example.com
+
+# After (template)
+- User: {{USER_NAME}}
+- Email: {{USER_EMAIL}}
+```
+
+**For API keys:** Use placeholders:
 ```bash
 # Before
 ANTHROPIC_API_KEY=sk-ant-1234567890

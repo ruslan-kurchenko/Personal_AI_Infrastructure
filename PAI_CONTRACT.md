@@ -55,7 +55,33 @@ These features work immediately after Quick Start, **requiring no configuration*
 
 ## ⚙️ Configured Functionality (Needs Setup)
 
-These features require API keys or external services:
+These features require configuration or API keys:
+
+### 0. **Personal Identity (Optional)**
+
+**Purpose:** Personalize PAI with your name, organization, and preferences
+
+**Requires:**
+- PAI_USER_NAME and PAI_AGENT_NAME in settings.json env block
+- Optional: PAI_USER_EMAIL, PAI_USER_LOCATION_*, PAI_USER_ROLE, etc.
+
+**Default Behavior:**
+- Without configuration: Uses generic defaults ("User", "Assistant")
+- With configuration: Templates in identity.md get substituted with your values
+
+**Setup:**
+```json
+{
+  "env": {
+    "PAI_USER_NAME": "Your Name",
+    "PAI_AGENT_NAME": "Your Assistant Name"
+  }
+}
+```
+
+**See:** `.claude/docs/FORKING_PAI.md` for complete personalization guide
+
+**These features require API keys or external services:**
 
 ### 1. **Voice Server**
 **Requires:**

@@ -122,6 +122,54 @@ claude-code
 
 ---
 
+## ⚙️ **Configuration & Personalization**
+
+PAI can be personalized via environment variables in `~/.claude/settings.json`:
+
+### Quick Personalization
+
+Add your identity to the `env` block in `~/.claude/settings.json`:
+
+```json
+{
+  "env": {
+    "PAI_USER_NAME": "Your Full Name",
+    "PAI_AGENT_NAME": "Your Assistant Name",
+    "PAI_USER_EMAIL": "your.email@example.com",
+    "PAI_VOICE_ID": "your_elevenlabs_voice_id"
+  }
+}
+```
+
+### Available Configuration
+
+| Variable | Purpose | Required | Default |
+|----------|---------|----------|---------|
+| `PAI_USER_NAME` | Your name | No | "User" |
+| `PAI_AGENT_NAME` | Your assistant's name | No | "Assistant" |
+| `PAI_USER_EMAIL` | Your email | No | "" |
+| `PAI_USER_LOCATION_CITY` | Your city | No | "" |
+| `PAI_USER_LOCATION_COUNTRY` | Your country | No | "" |
+| `PAI_USER_TIMEZONE` | Your timezone | No | "" |
+| `PAI_USER_ROLE` | Your job title | No | "" |
+| `PAI_USER_ORGANIZATION` | Your company | No | "" |
+| `PAI_VOICE_ID` | ElevenLabs voice ID | No | "" |
+
+See `.claude/.env.example` for complete configuration options.
+
+### How It Works
+
+1. **Core files** (SKILL.md, CONSTITUTION.md) are de-personalized and generic
+2. **Template file** (identity.md) contains `{{VARIABLES}}` placeholders
+3. **Session start hook** substitutes variables with your env var values
+4. **Your personalized context** loads automatically
+
+**Guides:**
+- **[FORKING_PAI.md](.claude/docs/FORKING_PAI.md)** - Complete fork and customization guide
+- **[EXTENSION_PATTERN.md](.claude/docs/EXTENSION_PATTERN.md)** - Create custom context hooks (k-health pattern)
+
+---
+
 ## 📚 **Documentation**
 
 **All documentation lives in the CORE skill** (`.claude/skills/CORE/`):

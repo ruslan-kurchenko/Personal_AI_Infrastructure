@@ -73,3 +73,9 @@ credentials/
 .claude/file-history/
 .claude/history.jsonl
 .claude/plans/
+
+# PAI - Personal configuration and temporary files
+.claude/scratchpad/
+.claude/settings.local.json
+
+# PAI - Personal data (settings.json contains personal env vars - customize after forking)
